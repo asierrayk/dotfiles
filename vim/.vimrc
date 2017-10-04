@@ -22,13 +22,15 @@ Plugin 'nvie/vim-flake8'
 Plugin 'jnurmine/Zenburn'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
-Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
+Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-surround'
 Plugin 'hynek/vim-python-pep8-indent'
-
+Plugin 'tpope/vim-commentary'
 Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'klen/python-mode'
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'airblade/vim-gitgutter'
 
 
 
@@ -96,7 +98,7 @@ nnoremap ; :
 
 "Copy paste to/from clipboard
 "nnoremap <Leader>y "*y
-nnoremap <Leader>h "*p
+nnoremap <Leader>p "*p
 "nnoremap <Leader>Y "+y
 "nnoremap <Leader>P "+p
 
@@ -134,4 +136,9 @@ syntax on
 
 " PYMODE
 let g:pymode_rope_goto_definition_bind="<C-]>"
+let g:pymode_rope_show_doc_bind = '<leader>k'
 set nofoldenable
+autocmd! FileType python nnoremap <leader>f :PymodeLintAuto<CR>
+
+" GITGUTTER
+let g:gitgutter_map_keys = 0
