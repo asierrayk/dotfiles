@@ -22,7 +22,6 @@ Plugin 'nvie/vim-flake8'
 Plugin 'jnurmine/Zenburn'
 Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
-" Plugin 'Lokaltog/powerline', {'rtp': 'powerline/bindings/vim/'}
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-surround'
 Plugin 'hynek/vim-python-pep8-indent'
@@ -93,8 +92,7 @@ nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
 
-let mapleader=","
-nnoremap ; :
+map <Space> <leader>
 
 "Copy paste to/from clipboard
 "nnoremap <Leader>y "*y
@@ -135,10 +133,26 @@ syntax on
 
 
 " PYMODE
-let g:pymode_rope_goto_definition_bind="<C-]>"
-let g:pymode_rope_show_doc_bind = '<leader>k'
+" let g:pymode_python = 'python3'
+let g:pymode_motion = 0
+let g:pymode_doc = 0
+let g:pymode_virtualenv = 1
+let g:pymode_run = 0
+
+" let g:pymode_rope_goto_definition_bind="<leader>g"
+" let g:pymode_rope_show_doc_bind = '<leader>k'
 set nofoldenable
-autocmd! FileType python nnoremap <leader>f :PymodeLintAuto<CR>
+let g:pymode_lint = 1
+let g:pymode_lint_on_write = 1
+let g:pymode_lint_on_fly = 0
+let g:pymode_lint_message = 1
+autocmd! FileType python3 nnoremap <leader>f :PymodeLintAuto<CR>
+
+let g:pymode_rope = 1
+let g:pymode_rope_lookup_project = 0
+let g:pymode_rope_completion = 0
+
+let g:pymode_rope_rename_bind = '<leader>rn'
 
 " GITGUTTER
 let g:gitgutter_map_keys = 0
