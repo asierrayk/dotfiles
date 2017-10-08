@@ -30,7 +30,12 @@ Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'klen/python-mode'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'airblade/vim-gitgutter'
+Plugin 'ervandew/supertab'
 
+" ULTISNIPS
+Plugin 'SirVer/ultisnips'
+" Optional
+Plugin 'honza/vim-snippets'
 
 
 " All of your plugins must be added before the following line
@@ -74,16 +79,6 @@ set number              " show line numbers
 set relativenumber      " show numbers as relative by default
 set showmatch           " higlight matching parentheses and brackets
 
-" TABS
-nnoremap tn :tabnew<Space>
-nnoremap tj :tabnext<CR>
-nnoremap tk :tabprev<CR>
-nnoremap th :tabfirst<CR>
-nnoremap tl :tablast<CR>
-nnoremap tt :tabedit<Space>
-nnoremap td :tabclose<CR>
-nnoremap to :tabonly<CR>
-nnoremap tf :tabfind<Space>
 
 
 " WINDOWS
@@ -94,11 +89,22 @@ nnoremap <C-l> <C-w>l
 
 map <Space> <leader>
 
+" TABS
+nnoremap <leader>tn :tabnew<Space>
+nnoremap <leader>tj :tabnext<CR>
+nnoremap <leader>tk :tabprev<CR>
+nnoremap <leader>th :tabfirst<CR>
+nnoremap <leader>tl :tablast<CR>
+nnoremap <leader>tt :tabedit<Space>
+nnoremap <leader>td :tabclose<CR>
+nnoremap <leader>to :tabonly<CR>
+
+
 "Copy paste to/from clipboard
-"nnoremap <Leader>y "*y
+nnoremap <Leader>y "*y
 nnoremap <Leader>p "*p
-"nnoremap <Leader>Y "+y
-"nnoremap <Leader>P "+p
+nnoremap <Leader>Y "+y
+nnoremap <Leader>P "+p
 
 
 
@@ -146,7 +152,7 @@ let g:pymode_lint = 1
 let g:pymode_lint_on_write = 1
 let g:pymode_lint_on_fly = 0
 let g:pymode_lint_message = 1
-autocmd! FileType python3 nnoremap <leader>f :PymodeLintAuto<CR>
+autocmd! FileType python nnoremap <leader>f :PymodeLintAuto<CR>
 
 let g:pymode_rope = 1
 let g:pymode_rope_lookup_project = 0
@@ -156,3 +162,19 @@ let g:pymode_rope_rename_bind = '<leader>rn'
 
 " GITGUTTER
 let g:gitgutter_map_keys = 0
+
+" SNIPPETS
+" let g:snipMate = {}
+" let g:snipMate.snippet_version = 1
+" imap <tab> <Plug>snipMateTrigger
+
+" youcompleteme
+let g:ycm_key_list_select_completion   = ['<C-j>', '<C-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+" supertab
+let g:SuperTabDefaultCompletionType    = '<C-n>'
+let g:SuperTabCrMapping                = 0
+" ultisnips
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
