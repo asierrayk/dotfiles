@@ -178,3 +178,7 @@ let g:SuperTabCrMapping                = 0
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+
+
+" JSON Format
+autocmd! FileType json nnoremap <leader>f :%!python -m json.tool<CR>
