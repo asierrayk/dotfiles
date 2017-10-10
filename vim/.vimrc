@@ -102,6 +102,7 @@ nnoremap <leader>to :tabonly<CR>
 
 "Copy paste to/from clipboard
 nnoremap <Leader>y "*y
+vnoremap <Leader>y "+y
 nnoremap <Leader>p "*p
 nnoremap <Leader>Y "+y
 nnoremap <Leader>P "+p
