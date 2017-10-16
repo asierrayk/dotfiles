@@ -31,7 +31,8 @@ Plugin 'klen/python-mode'
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ervandew/supertab'
-
+Plugin 'sjl/gundo.vim'
+"
 " ULTISNIPS
 Plugin 'SirVer/ultisnips'
 " Optional
@@ -79,9 +80,11 @@ set number              " show line numbers
 set relativenumber      " show numbers as relative by default
 set showmatch           " higlight matching parentheses and brackets
 
+" MOVEMENT
+" highlight last inserted text
+nnoremap gV `[v`]
 
-
-" WINDOWS
+" windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
@@ -89,7 +92,7 @@ nnoremap <C-l> <C-w>l
 
 map <Space> <leader>
 
-" TABS
+" tabs
 nnoremap <leader>tn :tabnew<Space>
 nnoremap <leader>tj :tabnext<CR>
 nnoremap <leader>tk :tabprev<CR>
@@ -99,13 +102,24 @@ nnoremap <leader>tt :tabedit<Space>
 nnoremap <leader>td :tabclose<CR>
 nnoremap <leader>to :tabonly<CR>
 
-
-"Copy paste to/from clipboard
-nnoremap <Leader>y "*y
+" EDITING
+" copy paste to/from clipboard
 vnoremap <Leader>y "+y
-nnoremap <Leader>p "*p
-nnoremap <Leader>Y "+y
-nnoremap <Leader>P "+p
+vnoremap <Leader>p "+p
+nnoremap <Leader>P "+P
+nnoremap <Leader>y "+y
+nnoremap <Leader>p "+p
+
+" toggle gundo
+nnoremap <leader>u :GundoToggle<CR>
+
+" edit vimrc/zshrc and load vimrc bindings
+nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>ez :vsp ~/.zshrc<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+
+" when you forgot to sudo before editing a file that requires root privileges
+cmap w!! w !sudo tee % >/dev/null
 
 
 
