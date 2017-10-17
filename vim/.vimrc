@@ -96,6 +96,8 @@ map <Space> <leader>
 nnoremap <leader>tn :tabnew<Space>
 nnoremap <leader>tj :tabnext<CR>
 nnoremap <leader>tk :tabprev<CR>
+nnoremap <leader>l :tabnext<CR>
+nnoremap <leader>h :tabprev<CR>
 nnoremap <leader>th :tabfirst<CR>
 nnoremap <leader>tl :tablast<CR>
 nnoremap <leader>tt :tabedit<Space>
@@ -146,15 +148,17 @@ au BufNewFile,BufRead *.py
 
 
 let g:ycm_autoclose_preview_window_after_completion=1
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
-
+map <leader>g :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>G :YcmCompleter GoTo<CR>
+map <leader>K :YcmCompleter GetDoc<CR>
+map <leader>rf :YcmCompleter GoToReferences<CR>
 
 let python_highlight_all=1
 syntax on
 
 
 " PYMODE
-" let g:pymode_python = 'python3'
+let g:ycm_python_binary_path = '/usr/bin/python3'
 let g:pymode_motion = 0
 let g:pymode_doc = 0
 let g:pymode_virtualenv = 1
