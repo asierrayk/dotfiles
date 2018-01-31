@@ -32,7 +32,8 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'ervandew/supertab'
 Plugin 'sjl/gundo.vim'
-"
+Plugin 'christoomey/vim-tmux-runner'
+
 " ULTISNIPS
 Plugin 'SirVer/ultisnips'
 " Optional
@@ -116,9 +117,11 @@ nnoremap <Leader>p "+p
 nnoremap <leader>u :GundoToggle<CR>
 
 " edit vimrc/zshrc and load vimrc bindings
-nnoremap <leader>ev :vsp $MYVIMRC<CR>
-nnoremap <leader>ez :vsp ~/.zshrc<CR>
+nnoremap <leader>ev :tabnew $MYVIMRC<CR>
+nnoremap <leader>ez :tabnew ~/.zshrc<CR>
+nnoremap <leader>et :tabnew ~/.tmux.conf<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>so :source %<CR>
 
 " when you forgot to sudo before editing a file that requires root privileges
 cmap w!! w !sudo tee % >/dev/null
@@ -129,8 +132,8 @@ cmap w!! w !sudo tee % >/dev/null
 nmap <leader>nt :NERDTree<cr>
 
 " open NERDTree automatically when vim starts up
-autocmd StdinReadPre * let s:std_in=1
-autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 
 " close vim if the only window left open is a NERDTree
 autocm bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -173,7 +176,7 @@ let g:pymode_lint_on_fly = 0
 let g:pymode_lint_message = 1
 autocmd! FileType python nnoremap <leader>f :PymodeLintAuto<CR>
 
-let g:pymode_rope = 1
+let g:pymode_rope = 0
 let g:pymode_rope_lookup_project = 0
 let g:pymode_rope_completion = 0
 
@@ -201,3 +204,14 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 
 " JSON Format
 autocmd! FileType json nnoremap <leader>f :%!python -m json.tool<CR>
+
+
+" vim-tmux-runner
+
+
+let g:VtrStripLeadingWhitespace = 0
+let g:VtrClearEmptyLines = 0
+let g:VtrAppendNewline = 1
+let g:vtr_filetype_runner_overrides = {
+        \ 'python': 'python3 {file}'
+        \ }
