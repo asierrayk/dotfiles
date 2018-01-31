@@ -24,6 +24,7 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'tpope/vim-fugitive'
 Plugin 'vim-airline/vim-airline'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-repeat'
 Plugin 'hynek/vim-python-pep8-indent'
 Plugin 'tpope/vim-commentary'
 Plugin 'jmcantrell/vim-virtualenv'
@@ -119,9 +120,9 @@ nnoremap <leader>u :GundoToggle<CR>
 " edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>ev :tabnew $MYVIMRC<CR>
 nnoremap <leader>ez :tabnew ~/.zshrc<CR>
-nnoremap <leader>et :tabnew ~/.tmux.conf<CR>
-nnoremap <leader>sv :source $MYVIMRC<CR>
 nnoremap <leader>so :source %<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>et :tabnew ~/.tmux.conf<CR>
 
 " when you forgot to sudo before editing a file that requires root privileges
 cmap w!! w !sudo tee % >/dev/null
