@@ -34,6 +34,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'ervandew/supertab'
 Plugin 'sjl/gundo.vim'
 Plugin 'christoomey/vim-tmux-runner'
+Plugin 'lervag/vimtex'
 
 " ULTISNIPS
 Plugin 'SirVer/ultisnips'
