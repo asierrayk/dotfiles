@@ -1,36 +1,43 @@
 * Interface
-  - tabbar
+** Tabbar
 #+BEGIN_SRC emacs-lisp
 (use-package tabbar
   :ensure t
   :config (tabbar-mode 1))
 #+END_SRC
 
-  - which key
+** Which key
 #+BEGIN_SRC emacs-lisp
 (use-package which-key
   :ensure t
   :config (which-key-mode))
 #+END_SRC
 
-  - ido
+** Ido
 #+BEGIN_SRC emacs-lisp
 (setq indo-enable-flex-matching t)
 (setq ido-everywhere t)
 (ido-mode 1)
 #+END_SRC
 
-  - winner mode
+** Winner mode
 #+BEGIN_SRC emacs-lisp
 (winner-mode 1)
 #+END_SRC
 
-* try
+** Neo tree
+#+BEGIN_SRC emacs-lisp
+(use-package neotree
+  :ensure t
+  :config (global-set-key [f8] 'neotree-toggle))
+#+END_SRC
+
+* Try
 #+BEGIN_SRC emacs-lisp
 (use-package try
   :ensure t)
 #+END_SRC
-* org mode
+* Org mode
 #+BEGIN_SRC emacs-lisp
 (use-package org-bullets
   :ensure t
@@ -38,7 +45,7 @@
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+END_SRC
 
-* swiper
+* Swiper
 #+BEGIN_SRC emacs-lisp
 (use-package counsel
   :ensure t
@@ -67,4 +74,54 @@
     (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
     (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
     ))
+#+END_SRC
+* Autocomplete
+  #+BEGIN_SRC emacs-lisp
+;  (use-package auto-complete
+;  :ensure t
+;  :init
+;  (progn
+;    (ac-config-default)
+;    (global-auto-complete-mode t)
+;    ))
+  #+END_SRC
+
+* Theme
+  #+BEGIN_SRC emacs-lisp
+    (use-package color-theme-modern
+      :ensure t)
+    (use-package zenburn-theme
+      :ensure t
+      :config (load-theme 'zenburn t))
+  #+END_SRC
+* Python
+** Flycheck
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :init
+    (global-flycheck-mode t))
+#+END_SRC
+** Jedi
+#+BEGIN_SRC emacs-lisp
+(use-package jedi
+  :ensure t
+  :init
+  (add-hook 'python-mode-hook 'jedi:setup)
+  (add-hook 'python-mode-hook 'jedi:ac-setup))
+#+END_SRC
+** Elpy
+#+BEGIN_SRC emacs-lisp
+  (use-package elpy
+    :ensure t
+    :config
+    (elpy-enable))
+#+END_SRC
+
+** Auto virtualenvwrapper
+#+BEGIN_SRC emacs-lisp
+  (use-package auto-virtualenvwrapper
+    :ensure t
+    :config
+    (add-hook 'python-mode-hook #'auto-virtualenvwrapper-activate))
 #+END_SRC

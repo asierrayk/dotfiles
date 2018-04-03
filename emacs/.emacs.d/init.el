@@ -22,7 +22,7 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
    (quote
-    (counsel which-key use-package try tabbar resize-window projectile org-bullets))))
+    (auto-virtualenvwrapper neotree elpy zenburn-theme color-theme-modern auto-complete counsel which-key use-package try tabbar resize-window projectile org-bullets))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
