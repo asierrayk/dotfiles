@@ -77,22 +77,33 @@
 #+END_SRC
 * Autocomplete
   #+BEGIN_SRC emacs-lisp
-;  (use-package auto-complete
-;  :ensure t
-;  :init
-;  (progn
-;    (ac-config-default)
-;    (global-auto-complete-mode t)
-;    ))
+;      (use-package auto-complete
+;      :ensure t
+;      :init
+;      (progn
+;        (ac-config-default)
+;        (global-auto-complete-mode t)
+;        (setq ac-sources '(ac-source-filename))
+;        ))
   #+END_SRC
-
+* Company
+  #+BEGIN_SRC emacs-lisp
+    (use-package company
+      :ensure t
+      :config
+      (progn
+        (company-mode)
+        (add-hook 'after-init-hook 'global-company-mode)
+        ))
+  #+END_SRC
 * Theme
   #+BEGIN_SRC emacs-lisp
-    (use-package color-theme-modern
-      :ensure t)
-    (use-package zenburn-theme
-      :ensure t
-      :config (load-theme 'zenburn t))
+        (use-package color-theme-modern
+          :ensure t
+          :config
+          (progn
+            (load-theme 'tango-dark t t)
+            (enable-theme 'tango-dark)))
   #+END_SRC
 * Python
 ** Flycheck
