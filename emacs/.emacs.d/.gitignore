@@ -3,3 +3,4 @@
 !.gitignore
 !init.el
 !myinit.org
+!rubik-mode.el

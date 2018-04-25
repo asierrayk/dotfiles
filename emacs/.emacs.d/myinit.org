@@ -25,6 +25,33 @@
 (winner-mode 1)
 #+END_SRC
 
+** Linum mode
+Set numbers on rows
+#+BEGIN_SRC emacs-lisp
+  (use-package linum
+    :ensure t
+    :config
+    (progn
+      (global-linum-mode t)
+      (setq linum-format "%5d ")))
+
+#+END_SRC
+** Parenthesis
+#+BEGIN_SRC emacs-lisp
+  (setq transient-mark-mode t)
+  (show-paren-mode)
+  (setq show-paren-style 'parenthesis)
+  (setq show-paren-delay 0.1) ;; default: 0.125
+#+END_SRC
+** Beacon - Highlight current line
+#+BEGIN_SRC emacs-lisp
+  (use-package beacon
+    :ensure t
+    :config
+    (beacon-mode 1)
+    (setq beacon-color "#666600")
+    )
+#+END_SRC
 ** Neo tree
 #+BEGIN_SRC emacs-lisp
 (use-package neotree
@@ -32,6 +59,28 @@
   :config (global-set-key [f8] 'neotree-toggle))
 #+END_SRC
 
+* Editing
+** Expand region
+#+BEGIN_SRC emacs-lisp
+  ; expand the marked region in semantic increments (negative prefix to reduce region)
+  (use-package expand-region
+  :ensure t
+  :config
+  (global-set-key (kbd "C-=") 'er/expand-region))
+#+END_SRC
+** Hungry delete
+#+BEGIN_SRC emacs-lisp
+; expand the marked region in semantic increments (negative prefix to reduce region)
+(use-package hungry-delete
+:ensure t
+:config
+(global-hungry-delete-mode))
+#+END_SRC
+** Iedit - Refactor word
+#+BEGIN_SRC emacs-lisp
+  (use-package iedit
+    :ensure t)
+#+END_SRC
 * Try
 #+BEGIN_SRC emacs-lisp
 (use-package try
@@ -45,35 +94,38 @@
   (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1))))
 #+END_SRC
 
+* Counsel
+#+BEGIN_SRC emacs-lisp
+    (use-package counsel
+      :ensure t
+      )
+#+END_SRC
 * Swiper
 #+BEGIN_SRC emacs-lisp
-(use-package counsel
-  :ensure t
-  )
 
-(use-package swiper
-  :ensure try
-  :config
-  (progn
-    (ivy-mode 1)
-    (setq ivy-use-virtual-buffers t)
-    (global-set-key "\C-s" 'swiper)
-    (global-set-key (kbd "C-c C-r") 'ivy-resume)
-    (global-set-key (kbd "<f6>") 'ivy-resume)
-    (global-set-key (kbd "M-x") 'counsel-M-x)
-    (global-set-key (kbd "C-x C-f") 'counsel-find-file)
-    (global-set-key (kbd "<f1> f") 'counsel-describe-function)
-    (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
-    (global-set-key (kbd "<f1> l") 'counsel-load-library)
-    (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
-    (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
-    (global-set-key (kbd "C-c g") 'counsel-git)
-    (global-set-key (kbd "C-c j") 'counsel-git-grep)
-    (global-set-key (kbd "C-c k") 'counsel-ag)
-    (global-set-key (kbd "C-x l") 'counsel-locate)
-    (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
-    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
-    ))
+  (use-package swiper
+    :ensure try
+    :config
+    (progn
+      (ivy-mode 1)
+      (setq ivy-use-virtual-buffers t)
+      (global-set-key "\C-s" 'swiper)
+  ;    (global-set-key (kbd "C-c C-r") 'ivy-resume)
+  ;    (global-set-key (kbd "<f6>") 'ivy-resume)
+  ;    (global-set-key (kbd "M-x") 'counsel-M-x)
+  ;    (global-set-key (kbd "C-x C-f") 'counsel-find-file)
+  ;    (global-set-key (kbd "<f1> f") 'counsel-describe-function)
+  ;    (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
+  ;    (global-set-key (kbd "<f1> l") 'counsel-load-library)
+  ;    (global-set-key (kbd "<f2> i") 'counsel-info-lookup-symbol)
+  ;    (global-set-key (kbd "<f2> u") 'counsel-unicode-char)
+  ;    (global-set-key (kbd "C-c g") 'counsel-git)
+  ;    (global-set-key (kbd "C-c j") 'counsel-git-grep)
+  ;    (global-set-key (kbd "C-c k") 'counsel-ag)
+  ;    (global-set-key (kbd "C-x l") 'counsel-locate)
+  ;    (global-set-key (kbd "C-S-o") 'counsel-rhythmbox)
+  ;    (define-key read-expression-map (kbd "C-r") 'counsel-expression-history)
+      ))
 #+END_SRC
 * Autocomplete
   #+BEGIN_SRC emacs-lisp
@@ -105,7 +157,21 @@
             (load-theme 'tango-dark t t)
             (enable-theme 'tango-dark)))
   #+END_SRC
+* Git
+    (use-package magit
+      :ensure t)
+* Flycheck
+#+BEGIN_SRC emacs-lisp
+  (use-package flycheck
+    :ensure t
+    :init
+    (global-flycheck-mode t))
+#+END_SRC
 * Python
+** General
+#+BEGIN_SRC emacs-lisp
+
+#+END_SRC
 ** Flycheck
 #+BEGIN_SRC emacs-lisp
   (use-package flycheck
@@ -128,11 +194,15 @@
     :config
     (elpy-enable))
 #+END_SRC
-
 ** Auto virtualenvwrapper
 #+BEGIN_SRC emacs-lisp
   (use-package auto-virtualenvwrapper
     :ensure t
     :config
     (add-hook 'python-mode-hook #'auto-virtualenvwrapper-activate))
+#+END_SRC
+* Rubik
+#+BEGIN_SRC emacs-lisp
+  (load-file ".emacs.d/rubik-mode.el")
+  (global-set-key [f1] 'rubik-mode)
 #+END_SRC
