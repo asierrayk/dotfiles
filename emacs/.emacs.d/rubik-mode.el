@@ -3,72 +3,112 @@
 ;;; Commentary:
 
 ;;; Code:
-(make-variable-buffer-local
- (defvar rubik-r 0
-   "Number R moves."))
+
+
+;;(defvar moves (?B ?D ?F ?L ?R ?U))
+
+(defun move-cw (move)
+  "Write clockwise MOVE."
+  (interactive)
+  (if (= (char-before (point)) move)
+      (insert "2")
+    (if (and (= (char-before (point)) ?\')
+	     (= (char-before (- (point) 1)) move))
+	 (backward-delete-char 2)
+      (if (and (= (char-before (point)) ?2)
+	       (= (char-before (- (point) 1)) move))
+	  (progn
+	    (backward-delete-char 1)
+	   (insert "'"))
+	(insert move)
+	 )
+      )
+    )
+  )
+
+(defun move-acw (move)
+  "Write anti-clockwise MOVE."
+  (interactive)
+  (if (= (char-before (point)) move)
+      (backward-delete-char 1)
+    (if (and (= (char-before (point)) ?\')
+	     (= (char-before (- (point) 1)) move))
+	(progn
+	  (backward-delete-char 1)
+	  (insert "2"))
+      (if (and (= (char-before (point)) ?2)
+	       (= (char-before (- (point) 1)) move))
+	  (backward-delete-char 1)
+	(progn
+	  (insert move)
+	  (insert "'")
+	 )
+	 )
+      )
+    )
+  )
 
 (defun R ()
   "R."
   (interactive)
-  (setq rubik-r (1+ rubik-r))
-  (insert "R"))
+  (move-cw ?R)
+  )
 
 (defun Rp ()
   "R'."
   (interactive)
-  (setq rubik-r (1+ rubik-r))
-  (insert "R'"))
+  (move-acw ?R))
 
 (defun L ()
   "L."
   (interactive)
-  (insert "L"))
+  (move-cw ?L))
 
 (defun Lp ()
   "L'."
   (interactive)
-  (insert "L"))
+  (move-acw ?L))
 
 (defun U ()
   "U."
   (interactive)
-  (insert "U"))
+  (move-cw ?U))
 
 (defun Up ()
   "U'."
   (interactive)
-  (insert "U'"))
+  (move-acw ?U))
 
 (defun F ()
   "F."
   (interactive)
-  (insert "F"))
+  (move-cw ?F))
 
 (defun Fp ()
   "F'."
   (interactive)
-  (insert "F'"))
+  (move-acw ?F))
 
 (defun B ()
   "B."
   (interactive)
-  (insert "B"))
+  (move-cw ?B))
 
 
 (defun Bp ()
   "B'."
   (interactive)
-  (insert "B'"))
+  (move-acw ?B))
 
 (defun D ()
   "D."
   (interactive)
-  (insert "D"))
+  (move-cw ?D))
 
 (defun Dp ()
   "D'."
   (interactive)
-  (insert "D'"))
+  (move-acw ?D))
 
 
 
@@ -78,7 +118,7 @@
   ;; The initial value - Set to 1 to enable by default
   nil
   ;; The indicator for the mode line.
-  " CustomMode"
+  " RubikMode"
   ;; The minor mode keymap
   `(
     (,(kbd "i") . R)
