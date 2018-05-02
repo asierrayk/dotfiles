@@ -203,6 +203,6 @@ Set numbers on rows
 #+END_SRC
 * Rubik
 #+BEGIN_SRC emacs-lisp
-  (load-file ".emacs.d/rubik-mode.el")
+  (load-file "~/.emacs.d/rubik-mode.el")
   (global-set-key [f1] 'rubik-mode)
 #+END_SRC

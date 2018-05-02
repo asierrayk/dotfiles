@@ -5,7 +5,7 @@
 ;;; Code:
 
 
-;;(defvar moves (?B ?D ?F ?L ?R ?U))
+(defvar moves '(?B ?D ?F ?L ?R ?U))
 
 (defun move-cw (move)
   "Write clockwise MOVE."
@@ -110,6 +110,88 @@
   (interactive)
   (move-acw ?D))
 
+(defun x ()
+  "x."
+  (interactive)
+  (move-cw ?x))
+
+(defun xp ()
+  "x'."
+  (interactive)
+  (move-acw ?x))
+
+(defun y ()
+  "y."
+  (interactive)
+  (move-cw ?y))
+
+(defun yp ()
+  "y'."
+  (interactive)
+  (move-acw ?y))
+
+(defun z ()
+  "z."
+  (interactive)
+  (move-cw ?z))
+
+(defun zp ()
+  "z'."
+  (interactive)
+  (move-acw ?z))
+
+(defun r ()
+  "r."
+  (interactive)
+  (move-cw ?r))
+
+(defun rp ()
+  "r'."
+  (interactive)
+  (move-acw ?r))
+
+(defun u ()
+  "u."
+  (interactive)
+  (move-cw ?u))
+
+(defun up ()
+  "u'."
+  (interactive)
+  (move-acw ?u))
+
+(defun l ()
+  "l."
+  (interactive)
+  (move-cw ?l))
+
+(defun lp ()
+  "l'."
+  (interactive)
+  (move-acw ?l))
+
+(defun d ()
+  "d."
+  (interactive)
+  (move-cw ?d))
+
+(defun dp ()
+  "d'."
+  (interactive)
+  (move-acw ?d))
+
+(defun M ()
+  "M."
+  (interactive)
+  (move-cw ?M))
+
+(defun Mp ()
+  "M'."
+  (interactive)
+  (move-acw ?M))
+
+
+
 
 
 ;;;###autoload
@@ -133,6 +215,24 @@
     (,(kbd "o") . Bp)
     (,(kbd "s") . D)
     (,(kbd "l") . Dp)
+    (,(kbd "y") . x)
+    (,(kbd "n") . xp)
+    (,(kbd "a") . y)
+    (,(kbd ";") . yp)
+    (,(kbd "p") . z)
+    (,(kbd "q") . zp)
+    (,(kbd "u") . r)
+    (,(kbd "m") . rp)
+    (,(kbd "r") . l)
+    (,(kbd "v") . lp)
+    (,(kbd ",") . u)
+    (,(kbd "c") . up)
+    (,(kbd ".") . Mp)
+    (,(kbd "x") . Mp)
+    (,(kbd "5") . M)
+    (,(kbd "6") . M)
+    (,(kbd "z") . d)
+    (,(kbd "/") . dp)
    )
    ;; Make mode global rather than buffer local
    ;;:global 1
