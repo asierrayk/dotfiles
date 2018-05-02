@@ -10,18 +10,28 @@
 (defun move-cw (move)
   "Write clockwise MOVE."
   (interactive)
+  ; CASE 2
   (if (= (char-before (point)) move)
       (insert "2")
-    (if (and (= (char-before (point)) ?\')
-	     (= (char-before (- (point) 1)) move))
-	 (backward-delete-char 2)
+    ; CASE '
+    (if (= (char-before (point)) ?\')
+	(if (and
+	     (= (char-before (- (point) 1)) ?2)
+	     (= (char-before (- (point) 2)) move))
+	    (progn
+	      (backward-delete-char 2)
+	      (insert "'"))
+	  (if (= (char-before (- (point) 1)) move)
+	      (backward-delete-char 2)
+	    (insert move))
+	)
       (if (and (= (char-before (point)) ?2)
 	       (= (char-before (- (point) 1)) move))
 	  (progn
 	    (backward-delete-char 1)
 	   (insert "'"))
 	(insert move)
-	 )
+	)
       )
     )
   )
@@ -31,18 +41,21 @@
   (interactive)
   (if (= (char-before (point)) move)
       (backward-delete-char 1)
-    (if (and (= (char-before (point)) ?\')
-	     (= (char-before (- (point) 1)) move))
-	(progn
-	  (backward-delete-char 1)
-	  (insert "2"))
+    (if (= (char-before (point)) ?\')
+	(if (and
+	     (= (char-before (- (point) 1)) ?2)
+	     (= (char-before (- (point) 2)) move))
+	    (backward-delete-char 2)
+	  (if (= (char-before (- (point) 1)) move)
+	      (progn
+		(backward-delete-char 1)
+		(insert "2")
+		(insert "'"))
+	    (insert move "'")))
       (if (and (= (char-before (point)) ?2)
 	       (= (char-before (- (point) 1)) move))
 	  (backward-delete-char 1)
-	(progn
-	  (insert move)
-	  (insert "'")
-	 )
+	(insert move "'")
 	 )
       )
     )
