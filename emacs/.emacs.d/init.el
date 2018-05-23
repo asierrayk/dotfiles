@@ -33,7 +33,7 @@
     ("#CC9393" "#DFAF8F" "#F0DFAF" "#7F9F7F" "#BFEBBF" "#93E0E3" "#94BFF3" "#DC8CC3")))
  '(package-selected-packages
    (quote
-    (beacon expand-region magit company-mode auto-virtualenvwrapper neotree elpy zenburn-theme color-theme-modern auto-complete counsel which-key use-package try tabbar resize-window projectile org-bullets)))
+    (evil beacon expand-region magit company-mode auto-virtualenvwrapper neotree elpy zenburn-theme color-theme-modern auto-complete counsel which-key use-package try tabbar resize-window projectile org-bullets)))
  '(pdf-view-midnight-colors (quote ("#DCDCCC" . "#383838")))
  '(vc-annotate-background "#2B2B2B")
  '(vc-annotate-color-map
