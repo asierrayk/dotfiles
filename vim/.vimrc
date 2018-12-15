@@ -169,6 +169,9 @@ let g:pymode_doc = 0
 let g:pymode_virtualenv = 1
 let g:pymode_run = 0
 
+
+nnoremap <leader>p Oimport pdb; pdb.set_trace()<Esc>
+
 " let g:pymode_rope_goto_definition_bind="<leader>g"
 " let g:pymode_rope_show_doc_bind = '<leader>k'
 set nofoldenable
