@@ -92,5 +92,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias mkvnv="virtualenv -p python3 venv"
 alias vnv="source venv/bin/activate"
 alias jnb="jupyter notebook"
