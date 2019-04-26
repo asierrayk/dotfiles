@@ -71,6 +71,7 @@ plugins=(
   jsontools
   django
   extract
+  autojump
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -125,3 +126,7 @@ chdvenv () {
         deactivate
     fi
 }
+
+# Autojump
+[[ -s /home/"$USER"/.autojump/etc/profile.d/autojump.sh ]] && source /home/"$USER"/.autojump/etc/profile.d/autojump.sh
+

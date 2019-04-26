@@ -22,6 +22,13 @@ sudo apt-get install curl -y
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
 ln -s -f .dotfiles/zsh/.zshrc ~/.zshrc
 
+# autojump
+sudo apt-get install autojump -y
+# git clone git://github.com/wting/autojump.git
+# cd autojump
+# ./install.py
+# cd ..
+# rm -rf autojump
 
 # not sure if needed
 sudo apt-get install fonts-powerline -y
