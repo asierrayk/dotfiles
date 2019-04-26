@@ -7,7 +7,7 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+ZSH_THEME="agnoster"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -39,7 +39,7 @@ ZSH_THEME="robbyrussell"
 # ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
+COMPLETION_WAITING_DOTS="true"
 
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
@@ -59,7 +59,18 @@ ZSH_THEME="robbyrussell"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
+  tmux
+  python
+  pip
+  sudo
+  supervisor
+  colored-man-pages
   git
+  gitfast
+  git-extras
+  jsontools
+  django
+  extract
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -92,6 +103,25 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
 alias mkvnv="virtualenv -p python3 venv"
 alias vnv="source venv/bin/activate"
 alias jnb="jupyter notebook"
+
+
+
+cd () { chdvenv && builtin cd "$@" && chavenv; }
+pushd () { chdvenv && builtin pushd "$@" && chavenv; }
+popd () { chdvenv && builtin popd "$@" && chavenv; }
+
+chavenv () {
+    if [ -d "venv" ] ; then
+        source venv/bin/activate
+    fi
+}
+
+chdvenv () {
+    if [ -d "venv" ] ; then
+        deactivate
+    fi
+}
