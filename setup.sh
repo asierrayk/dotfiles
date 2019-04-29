@@ -9,6 +9,10 @@ ln -s -f .dotfiles/vim/.vimrc ~/.vimrc
 
 vim +PluginInstall +qall
 
+# youcompleteme
+sudo apt install build-essential cmake python3-dev -y
+~/.vim/bundle/YouCompleteMe/install.py --clang-completer
+
 # TMUX
 sudo apt-get install tmux -y
 ln -s -f .dotfiles/tmux/.tmux.conf ~/.tmux.conf
@@ -16,6 +20,8 @@ ln -s -f .dotfiles/tmux/.tmux.conf ~/.tmux.conf
 mkdir ~/.tmux/plugins
 git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ~/.tmux/plugins/tpm/scripts/install_plugins.sh
+
+sudo apt install xclip -y
 
 # ZSH
 sudo apt-get install curl -y
@@ -37,6 +43,10 @@ cd fonts
 ./install.sh
 cd ..
 rm -rf fonts
+
+# Zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting ~/.oh-my-zsh/plugins/zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/plugins/zsh-autosuggestions
 
 # EMACS
 ln -s -f .dotfiles/emacs/.emacs.d .emacs.d

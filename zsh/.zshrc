@@ -60,6 +60,7 @@ COMPLETION_WAITING_DOTS="true"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
   tmux
+  tmuxinator
   python
   pip
   sudo
@@ -72,6 +73,8 @@ plugins=(
   django
   extract
   autojump
+  zsh-syntax-highlighting
+  zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -84,11 +87,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='vim'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -105,8 +108,10 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias mux='tmuxinator'
 alias mkvnv="virtualenv -p python3 venv"
 alias vnv="source venv/bin/activate"
+alias pir="virtualenv -p python3 venv && source venv/bin/activate && pip install -r requirements.txt"
 alias jnb="jupyter notebook"
 
 
