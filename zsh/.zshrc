@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/asier/.oh-my-zsh
+  export ZSH=/home/${USER}/.oh-my-zsh
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -135,3 +135,5 @@ chdvenv () {
 # Autojump
 [[ -s /home/"$USER"/.autojump/etc/profile.d/autojump.sh ]] && source /home/"$USER"/.autojump/etc/profile.d/autojump.sh
 
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

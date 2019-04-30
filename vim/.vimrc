@@ -2,60 +2,49 @@ set t_Co=256
 set t_ut=
 set background=dark
 
-" VUNDLE
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+call plug#begin()
 
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'davidhalter/jedi-vim'
-Plugin 'scrooloose/nerdtree.git'
-Plugin 'vim-scripts/indentpython.vim'
-Plugin 'scrooloose/syntastic'
-Plugin 'nvie/vim-flake8'
-Plugin 'jnurmine/Zenburn'
-Plugin 'kien/ctrlp.vim'
-Plugin 'tpope/vim-fugitive'
-Plugin 'vim-airline/vim-airline'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'hynek/vim-python-pep8-indent'
-Plugin 'tpope/vim-commentary'
-Plugin 'jmcantrell/vim-virtualenv'
-Plugin 'klen/python-mode'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'ervandew/supertab'
-Plugin 'sjl/gundo.vim'
-Plugin 'christoomey/vim-tmux-runner'
-Plugin 'lervag/vimtex'
+Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/plugged/YouCompleteMe/', 'do': 'python insall.py --clang-completer'}
+Plug 'VundleVim/Vundle.vim'
+Plug 'davidhalter/jedi-vim'
+Plug 'scrooloose/nerdtree'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'scrooloose/syntastic'
+Plug 'nvie/vim-flake8'
+Plug 'jnurmine/Zenburn'
+Plug 'kien/ctrlp.vim'
+Plug 'tpope/vim-fugitive'
+Plug 'vim-airline/vim-airline'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'hynek/vim-python-pep8-indent'
+Plug 'tpope/vim-commentary'
+Plug 'jmcantrell/vim-virtualenv'
+Plug 'klen/python-mode'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'airblade/vim-gitgutter'
+Plug 'ervandew/supertab'
+Plug 'sjl/gundo.vim'
+Plug 'christoomey/vim-tmux-runner'
+Plug 'lervag/vimtex'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'maxbrunsfeld/vim-yankstack'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " ULTISNIPS
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 " Optional
-Plugin 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 
 
 " All of your plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
+call plug#end()
+filetype plugin indent on
+
 
 set clipboard=unnamed
 colors zenburn
@@ -212,8 +201,6 @@ autocmd! FileType json nnoremap <leader>f :%!python -m json.tool<CR>
 
 
 " vim-tmux-runner
-
-
 let g:VtrStripLeadingWhitespace = 0
 let g:VtrClearEmptyLines = 0
 let g:VtrAppendNewline = 1
