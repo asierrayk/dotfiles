@@ -1,13 +1,15 @@
 set t_Co=256
 set t_ut=
 set background=dark
+set mouse=n
+set ttymouse=xterm2
 
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
 call plug#begin()
 
-Plug 'Valloric/YouCompleteMe', {'dir': '~/.vim/plugged/YouCompleteMe/', 'do': 'python insall.py --clang-completer'}
+Plug '~/.vim/plugged/YouCompleteMe'
 Plug 'VundleVim/Vundle.vim'
 Plug 'davidhalter/jedi-vim'
 Plug 'scrooloose/nerdtree'
@@ -95,6 +97,10 @@ nnoremap <leader>tl :tablast<CR>
 nnoremap <leader>tt :tabedit<Space>
 nnoremap <leader>td :tabclose<CR>
 nnoremap <leader>to :tabonly<CR>
+
+" splits
+nnoremap <leader>% :split<CR>
+nnoremap <leader>" :vsplit<CR>
 
 " EDITING
 " copy paste to/from clipboard

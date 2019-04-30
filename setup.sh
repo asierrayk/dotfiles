@@ -10,6 +10,8 @@ vim +PlugInstall +qall
 
 # youcompleteme
 sudo apt install build-essential cmake python3-dev -y
+sudo apt install build-essential cmake python3-dev -y
+~/.vim/plugged/YouCompleteMe/install.py --clang-completer
 
 # TMUX
 sudo apt-get install tmux -y
