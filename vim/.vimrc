@@ -33,7 +33,6 @@ Plug 'sjl/gundo.vim'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'lervag/vimtex'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'maxbrunsfeld/vim-yankstack'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 

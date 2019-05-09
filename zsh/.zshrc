@@ -128,7 +128,7 @@ chavenv () {
 
 chdvenv () {
     if [ -d "venv" ] ; then
-        deactivate
+        deactivate || echo "deactivate not found"
     fi
 }
 
