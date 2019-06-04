@@ -35,6 +35,7 @@ Plug 'lervag/vimtex'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
+Plug 'szymonmaszke/vimpyter'
 
 " ULTISNIPS
 Plug 'SirVer/ultisnips'
@@ -82,6 +83,11 @@ nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
 nnoremap <C-k> <C-w>k
 nnoremap <C-l> <C-w>l
+
+vnoremap <C-h> <C-w>h
+vnoremap <C-j> <C-w>j
+vnoremap <C-k> <C-w>k
+vnoremap <C-l> <C-w>l
 
 map <Space> <leader>
 
@@ -164,7 +170,7 @@ let g:pymode_virtualenv = 1
 let g:pymode_run = 0
 
 
-nnoremap <leader>p Oimport pdb; pdb.set_trace()<Esc>
+nnoremap <leader>b Oimport pdb; pdb.set_trace()<Esc>
 
 " let g:pymode_rope_goto_definition_bind="<leader>g"
 " let g:pymode_rope_show_doc_bind = '<leader>k'
@@ -180,6 +186,10 @@ let g:pymode_rope_lookup_project = 0
 let g:pymode_rope_completion = 0
 
 let g:pymode_rope_rename_bind = '<leader>rn'
+
+
+" JEDI
+let g:jedi#popup_on_dot = 0
 
 " GITGUTTER
 let g:gitgutter_map_keys = 0

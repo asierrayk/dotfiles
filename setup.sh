@@ -1,5 +1,6 @@
 # VIM
 sudo apt-get install vim -y
+sudo apt-get install vim-gtk -y
 sudo apt-get install git -y
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
