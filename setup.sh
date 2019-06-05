@@ -73,6 +73,7 @@ cd autojump
 ./install.py
 cd ..
 rm -rf autojump
+echo "[[ -s /home/${USER}/.autojump/etc/profile.d/autojump.sh ]] && source /home/${USER}/.autojump/etc/profile.d/autojump.sh" >> ~/.bashrc
 
 # not sure if needed
 sudo apt-get install fonts-powerline -y
