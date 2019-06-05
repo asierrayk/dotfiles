@@ -111,7 +111,7 @@ fi
 alias mux='tmuxinator'
 alias mkvnv="virtualenv -p python3 venv"
 alias vnv="source venv/bin/activate"
-alias pir="virtualenv -p python3 venv && source venv/bin/activate && pip install -r requirements.txt"
+alias pir="pip install -r requirements.txt"
 alias jnb="jupyter notebook"
 
 
@@ -133,7 +133,7 @@ chdvenv () {
 }
 
 # Autojump
-[[ -s /home/"$USER"/.autojump/etc/profile.d/autojump.sh ]] && source /home/"$USER"/.autojump/etc/profile.d/autojump.sh
+[[ -s /home/${USER}/.autojump/etc/profile.d/autojump.sh ]] && source /home/${USER}/.autojump/etc/profile.d/autojump.sh
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
