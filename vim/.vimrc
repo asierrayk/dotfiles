@@ -35,7 +35,7 @@ Plug 'lervag/vimtex'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
-Plug 'szymonmaszke/vimpyter'
+" Plug 'szymonmaszke/vimpyter'
 
 " ULTISNIPS
 Plug 'SirVer/ultisnips'
