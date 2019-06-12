@@ -187,6 +187,8 @@ let g:pymode_rope_completion = 0
 
 let g:pymode_rope_rename_bind = '<leader>rn'
 
+" avoid lag json folding
+let g:pymode_folding = 0
 
 " JEDI
 let g:jedi#popup_on_dot = 0
