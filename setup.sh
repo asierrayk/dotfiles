@@ -10,6 +10,7 @@ echo "INSTALL PYTHON"
 echo ""
 sudo apt install python3 -y
 sudo apt install python3-pip -y
+sudo apt-get install virtualenv -y
 sudo ln -fs /usr/bin/python3 /usr/bin/python
 sudo ln -fs /usr/bin/pip3 /usr/bin/pip
 # pip3 install notedown
