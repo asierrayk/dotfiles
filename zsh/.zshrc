@@ -9,6 +9,50 @@
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="bullet-train"
 
+# BEGIN BULLET TRAIN
+BULLETTRAIN_PROMPT_ORDER=(
+    elixir
+    status
+    custom
+    context
+    dir
+    perl
+    ruby
+    virtualenv
+    nvm
+    aws
+    go
+    rust
+    screen
+    git
+    hg
+    cmd_exec_time
+  )
+
+
+BULLETTRAIN_PROMPT_CHAR=""
+BULLETTRAIN_PROMPT_ROOT=false
+BULLETTRAIN_PROMPT_ADD_NEWLINE=false
+BULLETTRAIN_PROMPT_SEPARATE_LINE=false
+BULLETTRAIN_CONTEXT_DEFAULT_USER="asier"
+
+BULLETTRAIN_VIRTUALENV_BG="green"
+BULLETTRAIN_VIRTUALENV_FG="white"
+BULLETTRAIN_VIRTUALENV_PREFIX="🐍"
+
+BULLETTRAIN_GIT_BG="white"
+BULLETTRAIN_GIT_FG="black"
+
+BULLETTRAIN_IS_SSH_CLIENT=true
+
+# https://unicode.org/emoji/charts/full-emoji-list.html
+BULLETTRAIN_CUSTOM_MSG="♟"
+BULLETTRAIN_CUSTOM_BG="black"
+BULLETTRAIN_CUSTOM_FG="yellow"
+
+# END BULLET TRAIN
+
+
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
@@ -139,34 +183,3 @@ chdvenv () {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
-# BULLET TRAIN
-BULLETTRAIN_PROMPT_ORDER=(
-    elixir
-    status
-    custom
-    context
-    dir
-    perl
-    ruby
-    virtualenv
-    nvm
-    aws
-    go
-    rust
-    screen
-    git
-    hg
-    cmd_exec_time
-  )
-
-BULLETTRAIN_PROMPT_SEPARATE_LINE=false
-BULLETTRAIN_PROMPT_ADD_NEWLINE=false
-
-# BULLETTRAIN_CONTEXT_DEFAULT_USER="asier"
-
-BULLETTRAIN_VIRTUALENV_BG="green"
-BULLETTRAIN_VIRTUALENV_FG="white"
-BULLETTRAIN_VIRTUALENV_PREF="P"
-
-BULLETTRAIN_GIT_BG="white"
-BULLETTRAIN_GIT_FG="black"
