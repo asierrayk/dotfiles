@@ -7,7 +7,6 @@
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="agnoster"
 ZSH_THEME="bullet-train"
 
 # Set list of themes to load
@@ -138,3 +137,36 @@ chdvenv () {
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+
+# BULLET TRAIN
+BULLETTRAIN_PROMPT_ORDER=(
+    elixir
+    status
+    custom
+    context
+    dir
+    perl
+    ruby
+    virtualenv
+    nvm
+    aws
+    go
+    rust
+    screen
+    git
+    hg
+    cmd_exec_time
+  )
+
+BULLETTRAIN_PROMPT_SEPARATE_LINE=false
+BULLETTRAIN_PROMPT_ADD_NEWLINE=false
+
+# BULLETTRAIN_CONTEXT_DEFAULT_USER="asier"
+
+BULLETTRAIN_VIRTUALENV_BG="green"
+BULLETTRAIN_VIRTUALENV_FG="white"
+BULLETTRAIN_VIRTUALENV_PREF="P"
+
+BULLETTRAIN_GIT_BG="white"
+BULLETTRAIN_GIT_FG="black"

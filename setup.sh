@@ -50,9 +50,8 @@ ln -s -f .dotfiles/zsh/.zshrc ~/.zshrc
 
 chsh -s $(which zsh)
 
-# Bullet-train theme zsh
-wget http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme
-mv bullet-train.zsh-theme $ZSH_CUSTOM/themes/
+# Bullet-train
+sudo wget http://raw.github.com/caiogondim/bullet-train-oh-my-zsh-theme/master/bullet-train.zsh-theme -P $ZSH_CUSTOM/themes/
 
 # TMUX
 echo ""
