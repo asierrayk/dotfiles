@@ -39,8 +39,14 @@ Plug 'junegunn/fzf.vim'
 
 " ULTISNIPS
 Plug 'SirVer/ultisnips'
+
 " Optional
 Plug 'honza/vim-snippets'
+
+" MArkdown
+" If you don't have nodejs and yarn
+" use pre build
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
 
 " All of your plugins must be added before the following line
@@ -224,3 +230,6 @@ let g:VtrAppendNewline = 1
 let g:vtr_filetype_runner_overrides = {
         \ 'python': 'python3 {file}'
         \ }
+
+" Markdown
+nmap <leader>md <Plug>MarkdownPreviewToggle
