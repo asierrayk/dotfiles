@@ -29,6 +29,10 @@ ln -s -f .dotfiles/vim/.vimrc ~/.vimrc
 
 vim +PlugInstall +qall
 
+# python
+# pdb
+ln -s -f .dotfiles/python/.pdbrc.py ~/.pdbrc.py
+
 # youcompleteme
 echo ""
 echo "INSTALL YOUCOMPLETEME"
