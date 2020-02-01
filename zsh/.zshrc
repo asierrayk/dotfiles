@@ -153,8 +153,8 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias mux='tmuxinator'
-alias mkvnv="virtualenv -p python3 venv"
-alias vnv="source venv/bin/activate"
+alias mkvnv="virtualenv -p python3 .venv"
+alias vnv="source .venv/bin/activate"
 alias pir="pip install -r requirements.txt"
 alias jnb="jupyter notebook"
 
