@@ -43,7 +43,7 @@ Plug 'SirVer/ultisnips'
 " Optional
 Plug 'honza/vim-snippets'
 
-" MArkdown
+" Markdown
 " If you don't have nodejs and yarn
 " use pre build
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
@@ -120,6 +120,10 @@ vnoremap <Leader>p "+p
 nnoremap <Leader>P "+P
 nnoremap <Leader>y "+y
 nnoremap <Leader>p "+p
+
+" SUBSTITUTE
+" last searched word
+map <F4> :%s///gc<Left><Left><Left>
 
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
@@ -233,3 +237,6 @@ let g:vtr_filetype_runner_overrides = {
 
 " Markdown
 nmap <leader>md <Plug>MarkdownPreviewToggle
+
+" ctrlp
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc

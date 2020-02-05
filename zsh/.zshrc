@@ -165,13 +165,13 @@ pushd () { chdvenv && builtin pushd "$@" && chavenv; }
 popd () { chdvenv && builtin popd "$@" && chavenv; }
 
 chavenv () {
-    if [ -d "venv" ] ; then
-        source venv/bin/activate
+    if [ -d ".venv" ] ; then
+        source .venv/bin/activate
     fi
 }
 
 chdvenv () {
-    if [ -d "venv" ] ; then
+    if [ -d ".venv" ] ; then
         deactivate || echo "deactivate not found"
     fi
 }
