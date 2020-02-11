@@ -80,6 +80,8 @@ set number              " show line numbers
 set relativenumber      " show numbers as relative by default
 set showmatch           " higlight matching parentheses and brackets
 
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*/.venv/*,*/venv/*,*/logs/*
+
 " MOVEMENT
 " highlight last inserted text
 nnoremap gV `[v`]
@@ -123,7 +125,9 @@ nnoremap <Leader>p "+p
 
 " SUBSTITUTE
 " last searched word
-map <F4> :%s///gc<Left><Left><Left>
+map <F2> :%s///gc<Left><Left><Left>
+map <F1> :vimgrep /<C-R><C-W>/j ./**/* <CR> <bar> :copen <CR>
+map <F5> :e<CR>
 
 " toggle gundo
 nnoremap <leader>u :GundoToggle<CR>
@@ -237,6 +241,3 @@ let g:vtr_filetype_runner_overrides = {
 
 " Markdown
 nmap <leader>md <Plug>MarkdownPreviewToggle
-
-" ctrlp
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc
