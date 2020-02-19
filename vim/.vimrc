@@ -2,8 +2,7 @@ set t_Co=256
 set t_ut=
 set background=dark
 set mouse=n
-set ttymouse=xterm2
-
+set ttymouse=xterm2 
 set nocompatible              " be iMproved, required
 filetype off                  " required
 
@@ -86,6 +85,9 @@ set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*/.venv/*,*/venv/*,*/logs/*
 " highlight last inserted text
 nnoremap gV `[v`]
 
+" POSITIONING
+noremap <space><space> zz
+
 " windows
 nnoremap <C-h> <C-w>h
 nnoremap <C-j> <C-w>j
@@ -112,8 +114,8 @@ nnoremap <leader>td :tabclose<CR>
 nnoremap <leader>to :tabonly<CR>
 
 " splits
-nnoremap <leader>% :split<CR>
-nnoremap <leader>" :vsplit<CR>
+nnoremap <leader>" :split<CR>
+nnoremap <leader>% :vsplit<CR>
 
 " EDITING
 " copy paste to/from clipboard
@@ -126,7 +128,7 @@ nnoremap <Leader>p "+p
 " SUBSTITUTE
 " last searched word
 map <F2> :%s///gc<Left><Left><Left>
-map <F1> :vimgrep /<C-R><C-W>/j ./**/* <CR> <bar> :copen <CR>
+map <F1> :vimgrep /<C-R><C-W>/j ./**/* 
 map <F5> :e<CR>
 
 " toggle gundo
