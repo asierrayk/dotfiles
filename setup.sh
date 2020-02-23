@@ -3,6 +3,8 @@ echo ""
 echo "INSTALL GIT"
 echo ""
 sudo apt-get install git -y
+ln -s -f git/.gitconfig ~/.gitconfig
+ln -s -f git/.gitignore ~/.gitignore
 
 # PYTHON
 echo ""
