@@ -36,6 +36,20 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'ervandew/supertab'
 " Plug 'sjl/gundo.vim'
 
+" snippets engine
+Plug 'SirVer/ultisnips'
+
+" snippets
+Plug 'honza/vim-snippets'
+
+" deoplete for snippets completion
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 
 " tmux
 Plug 'christoomey/vim-tmux-runner'
@@ -54,10 +68,6 @@ Plug 'tpope/vim-fugitive'
 
 " Jupyter notebook
 " Plug 'szymonmaszke/vimpyter'
-
-" Snipets
-" Plug 'SirVer/ultisnips'
-" Plug 'honza/vim-snippets'
 
 " Markdown preview
 " If you don't have nodejs and yarn
@@ -292,6 +302,7 @@ let g:gitgutter_map_keys = 0
 " imap <tab> <Plug>snipMateTrigger
 
 " ultisnips
+" let g:deoplete#enable_at_startup = 1
 " let g:UltiSnipsExpandTrigger="<tab>"
 " let g:UltiSnipsJumpForwardTrigger="<tab>"
 " let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
