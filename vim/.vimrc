@@ -148,6 +148,11 @@ nnoremap <Leader>P "+P
 nnoremap <Leader>y "+y
 nnoremap <Leader>p "+p
 
+" If you like "Y" to work from the cursor to the end of line
+map Y y$
+" Change text previous to cursor
+map S c^
+
 " search across porject
 map <F1> :vimgrep /<C-R><C-W>/j ./**/* 
 " substitute

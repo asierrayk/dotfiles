@@ -183,3 +183,5 @@ chdvenv () {
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 
+# Avoid <C-s> entering in sleep mode
+stty -ixon
