@@ -5,6 +5,7 @@ set mouse=n
 set ttymouse=xterm2 
 set nocompatible              " be iMproved, required
 filetype off                  " required
+set noshowmode " required for jedi-vim function signature
 
 call plug#begin()
 
@@ -226,8 +227,10 @@ let g:jedi#completions_command = ''
 let g:jedi#rename_command = '<leader>rn'
 " let g:jedi#auto_initialization = 1
 let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatures = 1
-let g:jedi#show_call_signatures_delay = 50
+" let g:jedi#popup_select_first = 1
+let g:jedi#auto_close_doc = 0
+let g:jedi#show_call_signatures = 2
+let g:jedi#show_call_signatures_delay = 0
 " let g:jedi#rename_command = ''
 " let g:jedi#usages_command = ''
 " let g:jedi#auto_vim_configuration = 1
