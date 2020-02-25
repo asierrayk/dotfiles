@@ -8,8 +8,10 @@ filetype off                  " required
 
 call plug#begin()
 
-" Plug '~/.vim/plugged/YouCompleteMe'
 Plug 'VundleVim/Vundle.vim'
+
+" Plug '~/.vim/plugged/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
 " Apparence
 Plug 'jnurmine/Zenburn'
@@ -139,6 +141,22 @@ map <Space> <leader>
 " splits
 nnoremap <leader>" :split<CR>
 nnoremap <leader>% :vsplit<CR>
+
+" Fast window resizing with Arrow key (TODO change to Shift + Arrow key)
+if &term =~ '^screen'
+    " tmux will send xterm-style keys when its xterm-keys option is on
+    execute "set <xUp>=\e[1;*A"
+    execute "set <xDown>=\e[1;*B"
+    execute "set <xRight>=\e[1;*C"
+    execute "set <xLeft>=\e[1;*D"
+endif
+
+if bufwinnr(1)
+  nnoremap <S-Down> <C-W>+
+  nnoremap <S-Up> <C-W>-
+  nnoremap <S-Left> <C-W><
+  nnoremap <S-Right> <C-W>>
+endif
 
 " EDITING
 " copy paste to/from clipboard
@@ -307,6 +325,13 @@ let g:gitgutter_map_keys = 0
 " imap <tab> <Plug>snipMateTrigger
 
 " ultisnips
+let g:UltiSnipsExpandTrigger="<C-space>"
+let g:UltiSnipsJumpForwardTrigger="<c-b>"
+let g:UltiSnipsJumpBackwardTrigger="<c-z>"
+
+" If you want :UltiSnipsEdit to split your window.
+let g:UltiSnipsEditSplit="vertical"
+
 " let g:deoplete#enable_at_startup = 1
 " let g:UltiSnipsExpandTrigger="<tab>"
 " let g:UltiSnipsJumpForwardTrigger="<tab>"
