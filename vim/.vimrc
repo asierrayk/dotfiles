@@ -221,6 +221,26 @@ au BufNewFile,BufRead *.py
     \ set fileformat=unix |
 
 
+" JEDI
+let g:jedi#completions_command = ''
+let g:jedi#rename_command = '<leader>rn'
+" let g:jedi#auto_initialization = 1
+let g:jedi#popup_on_dot = 0
+let g:jedi#show_call_signatures = 1
+let g:jedi#show_call_signatures_delay = 50
+" let g:jedi#rename_command = ''
+" let g:jedi#usages_command = ''
+" let g:jedi#auto_vim_configuration = 1
+" let g:jedi#completions_enabled = 1
+let g:jedi#documentation_command = 'K'
+" let g:jedi#goto_stubs_command = ''
+" let g:jedi#goto_assignments_command = ''
+" let g:jedi#goto_command = ''
+" let g:jedi#completions_command = ''
+" let g:jedi#popup_select_first = 0
+" let g:jedi#use_tabs_not_buffers = 0
+" let g:jedi#smart_auto_mappings = 0
+" let g:jedi#use_tag_stack = 0
 
 " PYMODE
 " TODO source python.vim
@@ -241,7 +261,7 @@ let g:pymode_doc = 0
 let g:pymode_doc_bind = ''
 let g:pymode_virtualenv = 1
 let g:pymode_run = 1
-let g:pymode_run_bind = '<leader>r'
+let g:pymode_run_bind = '<leader>rr'
 let g:pymode_breakpoint = 1
 let g:pymode_breakpoint_bind = '<leader>b'
 let g:pymode_breakpoint_cmd = ''
@@ -290,25 +310,6 @@ let g:pymode_rope_completion = 0
 let g:pymode_rope_complete_on_dot = 0
 " avoid lag json folding
 let g:pymode_folding = 0
-
-" jedi
-" let g:jedi#auto_initialization = 1
-let g:jedi#popup_on_dot = 0
-let g:jedi#show_call_signatures = 1
-let g:jedi#show_call_signatures_delay = 50
-" let g:jedi#rename_command = ''
-" let g:jedi#usages_command = ''
-" let g:jedi#auto_vim_configuration = 1
-" let g:jedi#completions_enabled = 1
-let g:jedi#documentation_command = 'K'
-" let g:jedi#goto_stubs_command = ''
-" let g:jedi#goto_assignments_command = ''
-" let g:jedi#goto_command = ''
-" let g:jedi#completions_command = ''
-" let g:jedi#popup_select_first = 0
-" let g:jedi#use_tabs_not_buffers = 0
-" let g:jedi#smart_auto_mappings = 0
-" let g:jedi#use_tag_stack = 0
 
 
 " YouCompleteMe
