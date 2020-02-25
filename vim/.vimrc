@@ -128,16 +128,13 @@ vnoremap <C-l> <C-w>l
 map <Space> <leader>
 
 " tabs
-" nnoremap <leader>tn :tabnew<Space>
-" nnoremap <leader>tj :tabnext<CR>
-" nnoremap <leader>tk :tabprev<CR>
-" nnoremap <leader>l :tabnext<CR>
-" nnoremap <leader>h :tabprev<CR>
-" nnoremap <leader>th :tabfirst<CR>
-" nnoremap <leader>tl :tablast<CR>
-" nnoremap <leader>tt :tabedit<Space>
-" nnoremap <leader>td :tabclose<CR>
-" nnoremap <leader>to :tabonly<CR>
+" Tab navigation like Firefox.
+" nnoremap <C-S-tab> :tabprevious<CR>
+" nnoremap <C-tab>   :tabnext<CR>
+nnoremap <C-t>     :tabnew %<CR>
+" inoremap <C-S-tab> <Esc>:tabprevious<CR>i
+" inoremap <C-tab>   <Esc>:tabnext<CR>i
+inoremap <C-t>     <Esc>:tabnew %<CR>
 
 " splits
 nnoremap <leader>" :split<CR>
@@ -239,6 +236,7 @@ let g:jedi#documentation_command = 'K'
 " let g:jedi#goto_stubs_command = ''
 " let g:jedi#goto_assignments_command = ''
 " let g:jedi#goto_command = ''
+let g:jedi#use_tabs_not_buffers = 1
 " let g:jedi#completions_command = ''
 " let g:jedi#popup_select_first = 0
 " let g:jedi#use_tabs_not_buffers = 0
