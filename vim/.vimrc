@@ -1,11 +1,39 @@
+set nocompatible              " be iMproved, required
 set t_Co=256
 set t_ut=
 set background=dark
 set mouse=n
 set ttymouse=xterm2 
-set nocompatible              " be iMproved, required
 filetype off                  " required
+
+filetype plugin indent on
+
+set clipboard=unnamed
+
+" Stop acting like classic vi
+set history=1000            " increase history size
+set noswapfile              " don't create swapfiles
+set nobackup                " don't backup, use git!
+
+" Modify indenting settings
+set autoindent              " autoindent always ON.
+set expandtab               " expand tabs
+set shiftwidth=4            " spaces for autoindenting
+set softtabstop=4           " remove a full pseudo-TAB when i press <BS>
+
+" Modify some other settings about files
+set encoding=utf-8          " always use unicode
+set backspace=indent,eol,start " backspace always works on insert mode
+set hidden
+
+set wildmenu
 set noshowmode " required for jedi-vim function signature
+set laststatus=2        " always show statusbar
+set number              " show line numbers
+set relativenumber      " show numbers as relative by default
+set showmatch           " higlight matching parentheses and brackets
+
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*/.venv/*,*/venv/*,*/logs/*
 
 call plug#begin()
 
@@ -21,7 +49,6 @@ Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 
 Plug 'ap/vim-css-color'
-
 
 " general programming languages
 " Plug 'scrooloose/syntastic'
@@ -80,36 +107,11 @@ Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 " All of your plugins must be added before the following line
 call plug#end()
 
-filetype plugin indent on
 
-
-set clipboard=unnamed
+" THEME
 colors zenburn
 
-" Stop acting like classic vi
-set history=1000            " increase history size
-set noswapfile              " don't create swapfiles
-set nobackup                " don't backup, use git!
 
-" Modify indenting settings
-set autoindent              " autoindent always ON.
-set expandtab               " expand tabs
-set shiftwidth=4            " spaces for autoindenting
-set softtabstop=4           " remove a full pseudo-TAB when i press <BS>
-
-" Modify some other settings about files
-set encoding=utf-8          " always use unicode (god damnit, windows)
-set backspace=indent,eol,start " backspace always works on insert mode
-set hidden
-
-
-set showmode            " always show which more are we in
-set laststatus=2        " always show statusbar
-set number              " show line numbers
-set relativenumber      " show numbers as relative by default
-set showmatch           " higlight matching parentheses and brackets
-
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*/.venv/*,*/venv/*,*/logs/*
 
 " POSITIONING
 noremap <space><space> zz
@@ -140,7 +142,7 @@ inoremap <C-t>     <Esc>:tabnew %<CR>
 nnoremap <leader>" :split<CR>
 nnoremap <leader>% :vsplit<CR>
 
-" Fast window resizing with Arrow key (TODO change to Shift + Arrow key)
+" Fast window resizing with Shift + Arrow key 
 if &term =~ '^screen'
     " tmux will send xterm-style keys when its xterm-keys option is on
     execute "set <xUp>=\e[1;*A"
@@ -182,6 +184,7 @@ map <F5> :e<CR>
 nmap <F12> <Plug>MarkdownPreviewToggle
 map <F8> :Gstatus<CR>
 map <F9> :Gdiffsplit<CR>
+map <F10> :copen<CR>
 
 " toggle gundo
 " nnoremap <leader>u :GundoToggle<CR>
@@ -320,11 +323,6 @@ let g:pymode_folding = 0
 
 " git
 let g:gitgutter_map_keys = 0
-
-" SNIPPETS
-" let g:snipMate = {}
-" let g:snipMate.snippet_version = 1
-" imap <tab> <Plug>snipMateTrigger
 
 " ultisnips
 let g:UltiSnipsExpandTrigger="<C-space>"
