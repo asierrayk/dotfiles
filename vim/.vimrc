@@ -171,6 +171,11 @@ map Y y$
 " Change text previous to cursor
 map S c^
 
+" vim-surround use s
+map s ys
+map ss yss
+
+
 " search across porject
 map <F1> :vimgrep /<C-R><C-W>/j ./**/* 
 " substitute
