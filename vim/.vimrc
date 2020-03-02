@@ -64,6 +64,8 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'ervandew/supertab'
+" to camelCase crc, to snake_case crs
+Plug 'tpope/vim-abolish'
 " Plug 'sjl/gundo.vim'
 
 " snippets engine
@@ -244,7 +246,7 @@ let g:jedi#documentation_command = 'K'
 " let g:jedi#goto_stubs_command = ''
 " let g:jedi#goto_assignments_command = ''
 " let g:jedi#goto_command = ''
-let g:jedi#use_tabs_not_buffers = 1
+let g:jedi#use_tabs_not_buffers = 0
 " let g:jedi#completions_command = ''
 " let g:jedi#popup_select_first = 0
 " let g:jedi#use_tabs_not_buffers = 0
