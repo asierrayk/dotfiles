@@ -40,7 +40,7 @@ call plug#begin()
 Plug 'VundleVim/Vundle.vim'
 
 " Plug '~/.vim/plugged/YouCompleteMe'
-Plug 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 
 " Apparence
 Plug 'jnurmine/Zenburn'
@@ -133,12 +133,8 @@ map <Space> <leader>
 
 " tabs
 " Tab navigation like Firefox.
-" nnoremap <C-S-tab> :tabprevious<CR>
-" nnoremap <C-tab>   :tabnext<CR>
-nnoremap <C-t>     :tabnew %<CR>
-" inoremap <C-S-tab> <Esc>:tabprevious<CR>i
-" inoremap <C-tab>   <Esc>:tabnext<CR>i
-inoremap <C-t>     <Esc>:tabnew %<CR>
+nnoremap <C-t> :tabnew %<CR>
+inoremap <C-t> <Esc>:tabnew %<CR>
 
 " splits
 nnoremap <leader>" :split<CR>
@@ -179,7 +175,7 @@ map ss yss
 
 
 " search across porject
-map <F1> :vimgrep /<C-R><C-W>/j ./**/* 
+map <F1> :vimgrep /<C-R><C-W>/j ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left>
 " substitute
 vnoremap <F2> :s///gc<Left><Left><Left><Left>
 nnoremap <F2> :%s///gc<Left><Left><Left><Left>
@@ -230,7 +226,8 @@ au BufNewFile,BufRead *.py
 
 
 " JEDI
-let g:jedi#completions_command = ''
+let g:jedi#completions_enabled = 1
+let g:jedi#completions_command = '<C-n>'
 let g:jedi#rename_command = '<leader>rn'
 " let g:jedi#auto_initialization = 1
 let g:jedi#popup_on_dot = 0
@@ -241,7 +238,6 @@ let g:jedi#show_call_signatures_delay = 0
 " let g:jedi#rename_command = ''
 " let g:jedi#usages_command = ''
 " let g:jedi#auto_vim_configuration = 1
-" let g:jedi#completions_enabled = 1
 let g:jedi#documentation_command = 'K'
 " let g:jedi#goto_stubs_command = ''
 " let g:jedi#goto_assignments_command = ''
@@ -331,19 +327,11 @@ let g:pymode_folding = 0
 " git
 let g:gitgutter_map_keys = 0
 
-" ultisnips
-let g:UltiSnipsExpandTrigger="<C-space>"
-let g:UltiSnipsJumpForwardTrigger="<c-b>"
-let g:UltiSnipsJumpBackwardTrigger="<c-z>"
-
-" If you want :UltiSnipsEdit to split your window.
-let g:UltiSnipsEditSplit="vertical"
-
-" let g:deoplete#enable_at_startup = 1
-" let g:UltiSnipsExpandTrigger="<tab>"
-" let g:UltiSnipsJumpForwardTrigger="<tab>"
-" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
-
+"- ultisnips
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsListSnippets = '<c-s>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<c-p>'
 
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
