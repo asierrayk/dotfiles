@@ -181,6 +181,7 @@ vnoremap <F2> :s///gc<Left><Left><Left><Left>
 nnoremap <F2> :%s///gc<Left><Left><Left><Left>
 "refresh
 map <F5> :e<CR>
+map <F7> :PymodeLint<CR>
 
 " Markdown
 " TODO change to only work with md files
@@ -275,7 +276,7 @@ let g:pymode_breakpoint_cmd = ''
 
 let g:pymode_lint = 1
 let g:pymode_lint_on_write = 0
-let g:pymode_lint_unmodified = 1
+let g:pymode_lint_unmodified = 0
 let g:pymode_lint_on_fly = 0
 let g:pymode_lint_message = 1
 let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe', 'pep257']
