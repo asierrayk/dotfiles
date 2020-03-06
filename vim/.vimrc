@@ -31,9 +31,14 @@ set noshowmode " required for jedi-vim function signature
 set laststatus=2        " always show statusbar
 set number              " show line numbers
 set relativenumber      " show numbers as relative by default
-set showmatch           " higlight matching parentheses and brackets
+set showmatch           " highlight matching parentheses and brackets
 
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*/.venv/*,*/venv/*,*/logs/*
+
+" Spell check
+" TODO avoid highlights or only in certain part of code
+" set spell spelllang=en_us
+
 
 call plug#begin()
 
@@ -42,7 +47,7 @@ Plug 'VundleVim/Vundle.vim'
 " Plug '~/.vim/plugged/YouCompleteMe'
 " Plug 'Valloric/YouCompleteMe'
 
-" Apparence
+" Appearance
 Plug 'jnurmine/Zenburn'
 Plug 'vim-airline/vim-airline'
 Plug 'scrooloose/nerdtree'
@@ -74,15 +79,6 @@ Plug 'SirVer/ultisnips'
 " snippets
 Plug 'honza/vim-snippets'
 
-" deoplete for snippets completion
-" if has('nvim')
-"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-" else
-"   Plug 'Shougo/deoplete.nvim'
-"   Plug 'roxma/nvim-yarp'
-"   Plug 'roxma/vim-hug-neovim-rpc'
-" endif
-
 " tmux
 Plug 'christoomey/vim-tmux-runner'
 Plug 'christoomey/vim-tmux-navigator'
@@ -94,6 +90,7 @@ Plug 'christoomey/vim-tmux-navigator'
 " git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'Xuyuanp/nerdtree-git-plugin'
 
 " Latex?
 " Plug 'lervag/vimtex'
@@ -112,8 +109,6 @@ call plug#end()
 
 " THEME
 colors zenburn
-
-
 
 " POSITIONING
 noremap <space><space> zz
@@ -174,7 +169,7 @@ map s ys
 map ss yss
 
 
-" search across porject
+" search across project
 map <F1> :vimgrep /<C-R><C-W>/j ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left>
 " substitute
 vnoremap <F2> :s///gc<Left><Left><Left><Left>
@@ -188,7 +183,13 @@ map <F7> :PymodeLint<CR>
 nmap <F12> <Plug>MarkdownPreviewToggle
 map <F8> :Gstatus<CR>
 map <F9> :Gdiffsplit<CR>
+
+" Quickfix
+" TODO Test this plugin https://github.com/drmingdrmer/vim-toggle-quickfix
 map <F10> :copen<CR>
+map [q :cprev<CR>
+map ]q :cnext<CR>
+
 
 " toggle gundo
 " nnoremap <leader>u :GundoToggle<CR>
@@ -205,7 +206,7 @@ cmap w!! w !sudo tee % >/dev/null
 
 
 " NERDTREE
-nmap <leader>nt :NERDTree<cr>
+nmap <leader>t :NERDTreeToggle<cr>
 
 " open NERDTree automatically when vim starts up
 " autocmd StdinReadPre * let s:std_in=1
@@ -326,7 +327,15 @@ let g:pymode_folding = 0
 " nnoremap K :YcmCompleter GetDoc<CR>
 
 " git
+" TODO review, not working
 let g:gitgutter_map_keys = 0
+nmap ]h <Plug>(GitGutterNextHunk)
+nmap [h <Plug>(GitGutterPrevHunk)
+
+omap ih <Plug>(GitGutterTextObjectInnerPending)
+omap ah <Plug>(GitGutterTextObjectOuterPending)
+xmap ih <Plug>(GitGutterTextObjectInnerVisual)
+xmap ah <Plug>(GitGutterTextObjectOuterVisual)
 
 "- ultisnips
 let g:UltiSnipsExpandTrigger = '<tab>'
