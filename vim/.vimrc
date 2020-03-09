@@ -1,43 +1,53 @@
-set nocompatible              " be iMproved, required
-set t_Co=256
-set t_ut=
+set nocompatible              " This should be the first line
+set t_Co=256                  " number of colors
+set t_ut=                     " probably needed for tmux compatibility
 set background=dark
 set mouse=n
 set ttymouse=xterm2 
-filetype off                  " required
+" filetype off                  " required
 
 filetype plugin indent on
+syntax on
 
 set clipboard=unnamed
 
-" Stop acting like classic vi
 set history=1000            " increase history size
-set noswapfile              " don't create swapfiles
-set nobackup                " don't backup, use git!
+set noswapfile
+set nobackup
 
-" Modify indenting settings
-set autoindent              " autoindent always ON.
+" Identation
+set autoindent              " Copy indent from current line when starting a new line
 set expandtab               " expand tabs
 set shiftwidth=4            " spaces for autoindenting
 set softtabstop=4           " remove a full pseudo-TAB when i press <BS>
 
-" Modify some other settings about files
 set encoding=utf-8          " always use unicode
 set backspace=indent,eol,start " backspace always works on insert mode
-set hidden
+" set hidden            " When off a buffer is unloaded when it is abandoned
 
-set wildmenu
-set noshowmode " required for jedi-vim function signature
-set laststatus=2        " always show statusbar
-set number              " show line numbers
-set relativenumber      " show numbers as relative by default
-set showmatch           " highlight matching parentheses and brackets
+set wildmenu            " Autocompletion for commands
+set noshowmode          " Required for jedi-vim function signature
+set laststatus=2        " Show statusbar in all windows
+set number              " Show line numbers
+set relativenumber      " Show relative line numbers
+set showmatch           " Higlight matching parentheses and brackets
+set nofoldenable        " When off, all folds are open
 
+" .: Scan the current buffer
+" w: Scan buffers from other windows
+" b: Scan buffers from the buffer list
+" u: Scan buffers that have been unloaded from the buffer list
+" t: Tag completion
+" i: Scan the current and included files
+" kspell: Dictionary only when spell is enabled, :set spell
+set complete=.,w,b,u,t,i,kspell
+set completeopt=menu
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*/.venv/*,*/venv/*,*/logs/*
 
 " Spell check
 " TODO avoid highlights or only in certain part of code
-" set spell spelllang=en_us
+set spelllang=en_us
+" set spell
 
 
 call plug#begin()
@@ -215,117 +225,6 @@ nmap <leader>t :NERDTreeToggle<cr>
 " close vim if the only window left open is a NERDTree
 autocm bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-
-" PYTHON
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=79 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-
-
-" JEDI
-let g:jedi#completions_enabled = 1
-let g:jedi#completions_command = '<C-n>'
-let g:jedi#rename_command = '<leader>rn'
-" let g:jedi#auto_initialization = 1
-let g:jedi#popup_on_dot = 0
-" let g:jedi#popup_select_first = 1
-let g:jedi#auto_close_doc = 0
-let g:jedi#show_call_signatures = 2
-let g:jedi#show_call_signatures_delay = 0
-" let g:jedi#rename_command = ''
-" let g:jedi#usages_command = ''
-" let g:jedi#auto_vim_configuration = 1
-let g:jedi#documentation_command = 'K'
-" let g:jedi#goto_stubs_command = ''
-" let g:jedi#goto_assignments_command = ''
-" let g:jedi#goto_command = ''
-let g:jedi#use_tabs_not_buffers = 0
-" let g:jedi#completions_command = ''
-" let g:jedi#popup_select_first = 0
-" let g:jedi#use_tabs_not_buffers = 0
-" let g:jedi#smart_auto_mappings = 0
-" let g:jedi#use_tag_stack = 0
-
-" PYMODE
-" TODO source python.vim
-let python_highlight_all=1
-syntax on
-set nofoldenable
-
-" :help python-mode
-let g:pymode = 1
-let g:pymode_warnings = 1
-let g:pymode_trim_whitespaces = 1
-" let g:pymode_options_max_line_length = 79
-let g:pymode_options_colorcolumn = 0
-let g:pymode_python = 'python3'
-let g:pymode_indent = 1
-let g:pymode_motion = 1
-let g:pymode_doc = 0
-let g:pymode_doc_bind = ''
-let g:pymode_virtualenv = 1
-let g:pymode_run = 1
-let g:pymode_run_bind = '<leader>rr'
-let g:pymode_breakpoint = 1
-let g:pymode_breakpoint_bind = '<leader>b'
-let g:pymode_breakpoint_cmd = ''
-
-let g:pymode_lint = 1
-let g:pymode_lint_on_write = 0
-let g:pymode_lint_unmodified = 0
-let g:pymode_lint_on_fly = 0
-let g:pymode_lint_message = 1
-let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe', 'pep257']
-
-"Skip errors and warnings                                *'g:pymode_lint_ignore'*
-"E.g. "E501,W002", "E2,W" (Skip all Warnings and Errors that starts with E2) and etc
-let g:pymode_lint_ignore = "D107,D203,D212,D213,D402,D413"
-
-" Select some error or warnings.                          *'g:pymode_lint_select'*
-" By example you disable all warnings starting from 'W', but want to see warning
-" 'W0011' and warning 'W430'
-" let g:pymode_lint_select = "E501,W0011,W430"
-
-" Sort errors by relevance                                  *'g:pymode_lint_sort'*
-" If not empty, errors will be sort by defined relevance
-" E.g. let g:pymode_lint_sort = ['E', 'C', 'I']  " Errors first 'E',
-" after them 'C' and ...
-" >
-" let g:pymode_lint_sort = []
-
-" Auto open cwindow (quickfix) if any errors have been found
-let g:pymode_lint_cwindow = 0
-" Place error |signs|                                             *'g:pymode_signs'*
-let g:pymode_lint_signs = 1
-
-let g:pymode_lint_todo_symbol = 'WW'
-let g:pymode_lint_comment_symbol = 'CC'
-let g:pymode_lint_visual_symbol = 'RR'
-let g:pymode_lint_error_symbol = 'EE'
-let g:pymode_lint_info_symbol = 'II'
-let g:pymode_lint_pyflakes_symbol = 'FF'
-
-
-autocmd! FileType python nnoremap <leader>f :PymodeLintAuto<CR>
-
-let g:pymode_rope = 0
-let g:pymode_rope_lookup_project = 0
-let g:pymode_rope_completion = 0
-let g:pymode_rope_complete_on_dot = 0
-" avoid lag json folding
-let g:pymode_folding = 0
-
-
-" YouCompleteMe
-" let g:ycm_python_binary_path = '/usr/bin/python3'
-" let g:ycm_autoclose_preview_window_after_completion=0
-" nnoremap K :YcmCompleter GetDoc<CR>
-
 " git
 " TODO review, not working
 let g:gitgutter_map_keys = 0
@@ -347,11 +246,6 @@ let g:UltiSnipsJumpBackwardTrigger = '<c-p>'
 let g:SuperTabDefaultCompletionType = "context"
 " let g:SuperTabDefaultCompletionType    = '<C-n>'
 let g:SuperTabCrMapping                = 0
-
-
-" JSON Format
-autocmd! FileType json nnoremap <leader>f :%!python -m json.tool<CR>
-
 
 " vim-tmux-runner
 let g:VtrStripLeadingWhitespace = 0

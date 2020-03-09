@@ -27,7 +27,8 @@ sudo apt-get install git -y
 
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
         https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-ln -s -f .dotfiles/vim/.vimrc ~/.vimrc
+ln -s -f ~/.dotfiles/vim/.vimrc ~/.vimrc
+ln -s -f ~/.dotfiles/vim/ftplugin ~/.vim/ftplugin
 
 vim +PlugInstall +qall
 
