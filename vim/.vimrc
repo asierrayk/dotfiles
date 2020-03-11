@@ -15,7 +15,7 @@ set history=1000            " increase history size
 set noswapfile
 set nobackup
 
-" Identation
+" Indentation
 set autoindent              " Copy indent from current line when starting a new line
 set expandtab               " expand tabs
 set shiftwidth=4            " spaces for autoindenting
@@ -30,8 +30,13 @@ set noshowmode          " Required for jedi-vim function signature
 set laststatus=2        " Show statusbar in all windows
 set number              " Show line numbers
 set relativenumber      " Show relative line numbers
-set showmatch           " Higlight matching parentheses and brackets
+set showmatch           " Highlight matching parentheses and brackets
 set nofoldenable        " When off, all folds are open
+
+" TODO review this plugin https://github.com/haya14busa/incsearch.vim
+set incsearch           " Incremental search
+set hlsearch            " Highlight search
+nnoremap <esc><esc> :silent! nohlsearch<CR>
 
 " .: Scan the current buffer
 " w: Scan buffers from other windows
@@ -199,6 +204,8 @@ map <F9> :Gdiffsplit<CR>
 map <F10> :copen<CR>
 map [q :cprev<CR>
 map ]q :cnext<CR>
+map [l :prev<CR>
+map ]l :lnext<CR>
 
 
 " toggle gundo

@@ -60,7 +60,7 @@ let g:pymode_lint_checkers = ['pylint', 'pyflakes', 'pep8', 'mccabe', 'pep257']
 
 "Skip errors and warnings                                *'g:pymode_lint_ignore'*
 "E.g. "E501,W002", "E2,W" (Skip all Warnings and Errors that starts with E2) and etc
-let g:pymode_lint_ignore = "D107,D203,D212,D213,D402,D413"
+let g:pymode_lint_ignore = ["D107", "D203", "D212", "D213", "D402", "D413"]
 
 " Select some error or warnings.                          *'g:pymode_lint_select'*
 " By example you disable all warnings starting from 'W', but want to see warning
@@ -75,7 +75,7 @@ let g:pymode_lint_ignore = "D107,D203,D212,D213,D402,D413"
 " let g:pymode_lint_sort = []
 
 " Auto open cwindow (quickfix) if any errors have been found
-let g:pymode_lint_cwindow = 0
+let g:pymode_lint_cwindow = 1
 " Place error |signs|                                             *'g:pymode_signs'*
 let g:pymode_lint_signs = 1
 
