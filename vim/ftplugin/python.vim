@@ -6,12 +6,17 @@ set expandtab
 set autoindent
 set fileformat=unix
 
+
+map <F12> :PymodeLint<CR>
+nnoremap <leader>f :PymodeLintAuto<CR>
+
+
 " JEDI
 let g:jedi#completions_enabled = 1
 let g:jedi#completions_command = '<C-n>'
 let g:jedi#rename_command = '<leader>rn'
 " let g:jedi#auto_initialization = 1
-let g:jedi#popup_on_dot = 0
+" let g:jedi#popup_on_dot = 0
 " let g:jedi#popup_select_first = 1
 let g:jedi#auto_close_doc = 0
 let g:jedi#show_call_signatures = 2
@@ -86,8 +91,6 @@ let g:pymode_lint_error_symbol = 'EE'
 let g:pymode_lint_info_symbol = 'II'
 let g:pymode_lint_pyflakes_symbol = 'FF'
 
-
-nnoremap <leader>f :PymodeLintAuto<CR>
 
 let g:pymode_rope = 0
 let g:pymode_rope_lookup_project = 0

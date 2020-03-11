@@ -33,10 +33,9 @@ set relativenumber      " Show relative line numbers
 set showmatch           " Highlight matching parentheses and brackets
 set nofoldenable        " When off, all folds are open
 
-" TODO review this plugin https://github.com/haya14busa/incsearch.vim
-set incsearch           " Incremental search
 set hlsearch            " Highlight search
-nnoremap <esc><esc> :silent! nohlsearch<CR>
+set incsearch
+nnoremap <esc> :silent! nohlsearch<CR>
 
 " .: Scan the current buffer
 " w: Scan buffers from other windows
@@ -50,10 +49,7 @@ set completeopt=menu
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*/.venv/*,*/venv/*,*/logs/*
 
 " Spell check
-" TODO avoid highlights or only in certain part of code
 set spelllang=en_us
-" set spell
-
 
 call plug#begin()
 
@@ -87,6 +83,7 @@ Plug 'ervandew/supertab'
 " to camelCase crc, to snake_case crs
 Plug 'tpope/vim-abolish'
 " Plug 'sjl/gundo.vim'
+Plug 'drmingdrmer/vim-toggle-quickfix'
 
 " snippets engine
 Plug 'SirVer/ultisnips'
@@ -183,30 +180,24 @@ map S c^
 map s ys
 map ss yss
 
-
 " search across project
 map <F1> :vimgrep /<C-R><C-W>/j ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left>
 " substitute
 vnoremap <F2> :s///gc<Left><Left><Left><Left>
 nnoremap <F2> :%s///gc<Left><Left><Left><Left>
-"refresh
-map <F5> :e<CR>
-map <F7> :PymodeLint<CR>
-
-" Markdown
-" TODO change to only work with md files
-nmap <F12> <Plug>MarkdownPreviewToggle
-map <F8> :Gstatus<CR>
-map <F9> :Gdiffsplit<CR>
 
 " Quickfix
-" TODO Test this plugin https://github.com/drmingdrmer/vim-toggle-quickfix
-map <F10> :copen<CR>
+" Using https://github.com/drmingdrmer/vim-toggle-quickfix
+nmap <F4> <Plug>window:quickfix:loop
 map [q :cprev<CR>
 map ]q :cnext<CR>
 map [l :prev<CR>
 map ]l :lnext<CR>
 
+" refresh
+map <F5> :e<CR>
+map <F7> :Gdiffsplit<CR>
+map <F8> :Gstatus<CR>
 
 " toggle gundo
 " nnoremap <leader>u :GundoToggle<CR>
@@ -233,7 +224,6 @@ nmap <leader>t :NERDTreeToggle<cr>
 autocm bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " git
-" TODO review, not working
 let g:gitgutter_map_keys = 0
 nmap ]h <Plug>(GitGutterNextHunk)
 nmap [h <Plug>(GitGutterPrevHunk)
@@ -242,6 +232,10 @@ omap ih <Plug>(GitGutterTextObjectInnerPending)
 omap ah <Plug>(GitGutterTextObjectOuterPending)
 xmap ih <Plug>(GitGutterTextObjectInnerVisual)
 xmap ah <Plug>(GitGutterTextObjectOuterVisual)
+
+nmap <leader>hp <Plug>(GitGutterPreviewHunk)
+nmap <leader>hs <Plug>(GitGutterStageHunk)
+nmap <leader>hu <Plug>(GitGutterUndoHunk)
 
 "- ultisnips
 let g:UltiSnipsExpandTrigger = '<tab>'
