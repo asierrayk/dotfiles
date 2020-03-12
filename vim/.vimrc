@@ -4,7 +4,6 @@ set t_ut=                     " probably needed for tmux compatibility
 set background=dark
 set mouse=n
 set ttymouse=xterm2 
-" filetype off                  " required
 
 filetype plugin indent on
 syntax on
@@ -35,7 +34,7 @@ set nofoldenable        " When off, all folds are open
 
 set hlsearch            " Highlight search
 set incsearch
-nnoremap <esc> :silent! nohlsearch<CR>
+nnoremap <esc><esc> :silent! nohlsearch<CR>
 
 " .: Scan the current buffer
 " w: Scan buffers from other windows
@@ -83,7 +82,6 @@ Plug 'ervandew/supertab'
 " to camelCase crc, to snake_case crs
 Plug 'tpope/vim-abolish'
 " Plug 'sjl/gundo.vim'
-Plug 'drmingdrmer/vim-toggle-quickfix'
 
 " snippets engine
 Plug 'SirVer/ultisnips'
@@ -188,7 +186,7 @@ nnoremap <F2> :%s///gc<Left><Left><Left><Left>
 
 " Quickfix
 " Using https://github.com/drmingdrmer/vim-toggle-quickfix
-nmap <F4> <Plug>window:quickfix:loop
+" nmap <F4> <Plug>window:quickfix:loop
 map [q :cprev<CR>
 map ]q :cnext<CR>
 map [l :prev<CR>
@@ -256,3 +254,18 @@ let g:vtr_filetype_runner_overrides = {
         \ 'python': 'python3 {file}'
         \ }
 
+
+" TODO create your first vim plugin
+" Quick-fix toggle
+let s:enabled = 0
+function! QFToggle()
+    if s:enabled
+        cclose
+        let s:enabled = 0
+    else
+        copen
+        let s:enabled = 1
+    endif
+endfunction
+
+map <F4> :call QFToggle()<CR>
