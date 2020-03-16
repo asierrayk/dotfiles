@@ -103,5 +103,5 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 
 # EMACS
-ln -s -f .dotfiles/emacs/.emacs.d .emacs.d
+ln -s -f ~/.emacs.d ~/.dotfiles/emacs/.emacs.d
 
