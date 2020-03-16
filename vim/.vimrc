@@ -3,7 +3,7 @@ set t_Co=256                  " number of colors
 set t_ut=                     " probably needed for tmux compatibility
 set background=dark
 set mouse=n
-set ttymouse=xterm2 
+set ttymouse=xterm2
 
 filetype plugin indent on
 syntax on
@@ -48,11 +48,11 @@ set completeopt=menu
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*/.venv/*,*/venv/*,*/logs/*
 
 " Spell check
-set spelllang=en_us
+" set spelllang=en_us
 
 call plug#begin()
 
-Plug 'VundleVim/Vundle.vim'
+" Plug 'VundleVim/Vundle.vim'
 
 " Plug '~/.vim/plugged/YouCompleteMe'
 " Plug 'Valloric/YouCompleteMe'
@@ -113,6 +113,8 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " use pre build
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
+Plug 'asierrayk/vim-toggle'
+
 " All of your plugins must be added before the following line
 call plug#end()
 
@@ -145,7 +147,7 @@ inoremap <C-t> <Esc>:tabnew %<CR>
 nnoremap <leader>" :split<CR>
 nnoremap <leader>% :vsplit<CR>
 
-" Fast window resizing with Shift + Arrow key 
+" Fast window resizing with Shift + Arrow key
 if &term =~ '^screen'
     " tmux will send xterm-style keys when its xterm-keys option is on
     execute "set <xUp>=\e[1;*A"
@@ -184,18 +186,22 @@ map <F1> :vimgrep /<C-R><C-W>/j ./**/*<Left><Left><Left><Left><Left><Left><Left>
 vnoremap <F2> :s///gc<Left><Left><Left><Left>
 nnoremap <F2> :%s///gc<Left><Left><Left><Left>
 
-" Quickfix
-" Using https://github.com/drmingdrmer/vim-toggle-quickfix
-" nmap <F4> <Plug>window:quickfix:loop
+map <F4> :call ToggleQuickfix()<CR>
+
+" refresh
+map <F5> :e<CR>
+
+let g:SpellLangList= ["en_us", "es", "en_us,es"]
+nnoremap <F6> :call ToggleCycleSpellLang()<CR>
+
+map <F7> :Gdiffsplit<CR>
+map <F8> :Gstatus<CR>
+
+" quickfix loclist navigation
 map [q :cprev<CR>
 map ]q :cnext<CR>
 map [l :prev<CR>
 map ]l :lnext<CR>
-
-" refresh
-map <F5> :e<CR>
-map <F7> :Gdiffsplit<CR>
-map <F8> :Gstatus<CR>
 
 " toggle gundo
 " nnoremap <leader>u :GundoToggle<CR>
@@ -253,19 +259,3 @@ let g:VtrAppendNewline = 1
 let g:vtr_filetype_runner_overrides = {
         \ 'python': 'python3 {file}'
         \ }
-
-
-" TODO create your first vim plugin
-" Quick-fix toggle
-let s:enabled = 0
-function! QFToggle()
-    if s:enabled
-        cclose
-        let s:enabled = 0
-    else
-        copen
-        let s:enabled = 1
-    endif
-endfunction
-
-map <F4> :call QFToggle()<CR>
