@@ -78,7 +78,9 @@ echo ""
 echo "INSTALL TMUX"
 echo ""
 sudo apt-get install tmux -y
-sudo apt-get install tmuxinator -y
+gem install tmuxinator
+# tmuxinator completions
+wget https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh -O /usr/local/share/zsh/site-functions/_tmuxinator
 ln -s -f .dotfiles/tmux/.tmux.conf ~/.tmux.conf
 
 mkdir ~/.tmux/plugins
@@ -117,4 +119,3 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 
 # EMACS
 ln -s -f ~/.emacs.d ~/.dotfiles/emacs/.emacs.d
-
