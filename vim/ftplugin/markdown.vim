@@ -3,7 +3,7 @@
 " Interpret .md extension as a markdown file
 au BufRead,BufNewFile *.md set filetype=markdown
 
-set spelllang=es
-set spell
+setlocal spelllang=en_us,es
+setlocal spell
 
 map <F12> <Plug>MarkdownPreviewToggle

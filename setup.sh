@@ -15,7 +15,17 @@ sudo apt install python3-pip -y
 sudo apt-get install virtualenv -y
 sudo ln -fs /usr/bin/python3 /usr/bin/python
 sudo ln -fs /usr/bin/pip3 /usr/bin/pip
-# pip3 install notedown
+
+# PYENV
+sudo apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev \
+libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev \
+xz-utils tk-dev libffi-dev liblzma-dev python-openssl
+
+curl https://pyenv.run | bash
+
+# POETRY
+curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python
+
 
 # VIM
 echo ""
@@ -44,6 +54,9 @@ sudo apt install build-essential cmake python3-dev -y
 sudo apt install build-essential cmake python3-dev -y
 git clone --recursive https://github.com/Valloric/YouCompleteMe.git ~/.vim/plugged/YouCompleteMe
 ~/.vim/plugged/YouCompleteMe/install.py --clang-completer
+
+# install jq for json formatting
+sudo apt-get install jq -y
 
 # ZSH
 echo ""

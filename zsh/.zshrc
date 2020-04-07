@@ -185,3 +185,11 @@ chdvenv () {
 
 # Avoid <C-s> entering in sleep mode
 stty -ixon
+
+# pyenv
+export PATH="/home/$USER/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# poetry
+source $HOME/.poetry/env

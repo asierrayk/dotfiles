@@ -22,7 +22,7 @@ set softtabstop=4           " remove a full pseudo-TAB when i press <BS>
 
 set encoding=utf-8          " always use unicode
 set backspace=indent,eol,start " backspace always works on insert mode
-" set hidden            " When off a buffer is unloaded when it is abandoned
+set hidden            " When off a buffer is unloaded when it is abandoned
 
 set wildmenu            " Autocompletion for commands
 set noshowmode          " Required for jedi-vim function signature
@@ -48,11 +48,10 @@ set completeopt=menu
 set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*/.venv/*,*/venv/*,*/logs/*
 
 " Spell check
-" set spelllang=en_us
+set nospell
+set spelllang=en_us,es
 
 call plug#begin()
-
-" Plug 'VundleVim/Vundle.vim'
 
 " Plug '~/.vim/plugged/YouCompleteMe'
 " Plug 'Valloric/YouCompleteMe'
@@ -72,6 +71,9 @@ Plug 'ap/vim-css-color'
 Plug 'klen/python-mode'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'davidhalter/jedi-vim'
+
+" json
+Plug 'tpope/vim-jdaddy'
 
 " Editing
 Plug 'tpope/vim-surround'
@@ -93,10 +95,6 @@ Plug 'honza/vim-snippets'
 Plug 'christoomey/vim-tmux-runner'
 Plug 'christoomey/vim-tmux-navigator'
 
-" Search utils
-" Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-" Plug 'junegunn/fzf.vim'
-
 " git
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -105,14 +103,12 @@ Plug 'Xuyuanp/nerdtree-git-plugin'
 " Latex?
 " Plug 'lervag/vimtex'
 
-" Jupyter notebook
-" Plug 'szymonmaszke/vimpyter'
-
 " Markdown preview
 " If you don't have nodejs and yarn
 " use pre build
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 
+" My own plugins :)
 Plug 'asierrayk/vim-toggle'
 
 " All of your plugins must be added before the following line
@@ -182,11 +178,15 @@ map ss yss
 
 " search across project
 map <F1> :vimgrep /<C-R><C-W>/j ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left>
+map <leader>/ :vimgrep //j ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left>
 " substitute
 vnoremap <F2> :s///gc<Left><Left><Left><Left>
 nnoremap <F2> :%s///gc<Left><Left><Left><Left>
 
-map <F4> :call ToggleQuickfix()<CR>
+map <F3> :call ToggleQuickfix()<CR>
+
+" Delete lines that fit a pattern
+nnoremap <F4> :g//d<Left><Left>
 
 " refresh
 map <F5> :e<CR>
