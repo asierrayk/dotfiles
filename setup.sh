@@ -46,14 +46,41 @@ vim +PlugInstall +qall
 # pdb
 ln -s -f .dotfiles/python/.pdbrc.py ~/.pdbrc.py
 
-# youcompleteme
-echo ""
-echo "INSTALL YOUCOMPLETEME"
-echo ""
-sudo apt install build-essential cmake python3-dev -y
-sudo apt install build-essential cmake python3-dev -y
-git clone --recursive https://github.com/Valloric/YouCompleteMe.git ~/.vim/plugged/YouCompleteMe
-~/.vim/plugged/YouCompleteMe/install.py --clang-completer
+# youcompleteme legacy
+# echo ""
+# echo "INSTALL YOUCOMPLETEME"
+# echo ""
+# sudo apt install build-essential cmake python3-dev -y
+# sudo apt install build-essential cmake python3-dev -y
+# git clone --recursive https://github.com/Valloric/YouCompleteMe.git ~/.vim/plugged/YouCompleteMe
+# ~/.vim/plugged/YouCompleteMe/install.py --clang-completer
+
+# deoplete
+pip3 install --user pynvim
+pip install msgpack
+
+# NEOVIM
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo apt-get update
+sudo apt-get install neovim
+
+sudo apt install python-neovim
+sudo apt install python3-neovim
+
+sudo apt-get install python-dev python-pip python3-dev python3-pip
+
+pyenv virtualenv 2.7.14 neovim2
+pyenv activate neovim2
+pip install neovim
+pyenv deactivate
+
+pyenv virtualenv 3.6.10 neovim3
+pyenv activate neovim3
+pip install neovim
+pyenv deactivate
+
+mkdir ~/.config/nvim
+ln -s -f ~/.dotfiles/neovim/init.vim ~/.config/nvim/init.vim
 
 # install jq for json formatting
 sudo apt-get install jq -y

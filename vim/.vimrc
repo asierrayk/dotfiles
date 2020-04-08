@@ -2,8 +2,12 @@ set nocompatible              " This should be the first line
 set t_Co=256                  " number of colors
 set t_ut=                     " probably needed for tmux compatibility
 set background=dark
-set mouse=n
-set ttymouse=xterm2
+if has('nvim')
+    set mouse=a
+else
+    set mouse=n
+    set ttymouse=xterm2
+endif
 
 filetype plugin indent on
 syntax on
@@ -59,6 +63,7 @@ call plug#begin()
 " Appearance
 Plug 'jnurmine/Zenburn'
 Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 
@@ -91,6 +96,15 @@ Plug 'SirVer/ultisnips'
 " snippets
 Plug 'honza/vim-snippets'
 
+" snippets autocomplete deoplete
+if has('nvim')
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+else
+  Plug 'Shougo/deoplete.nvim'
+  Plug 'roxma/nvim-yarp'
+  Plug 'roxma/vim-hug-neovim-rpc'
+endif
+
 " tmux
 Plug 'christoomey/vim-tmux-runner'
 Plug 'christoomey/vim-tmux-navigator'
@@ -114,9 +128,17 @@ Plug 'asierrayk/vim-toggle'
 " All of your plugins must be added before the following line
 call plug#end()
 
+" PYTHON SUPPORT
+if has('nvim')
+    let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')  " Python 3
+endif
 
 " THEME
 colors zenburn
+
+" AIRLINE
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_theme='dark'
 
 " POSITIONING
 noremap <space><space> zz
@@ -241,11 +263,18 @@ nmap <leader>hp <Plug>(GitGutterPreviewHunk)
 nmap <leader>hs <Plug>(GitGutterStageHunk)
 nmap <leader>hu <Plug>(GitGutterUndoHunk)
 
+
 "- ultisnips
 let g:UltiSnipsExpandTrigger = '<tab>'
 let g:UltiSnipsListSnippets = '<c-s>'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
-let g:UltiSnipsJumpBackwardTrigger = '<c-p>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+if has('nvim')
+    let g:deoplete#enable_at_startup = 1
+else
+    let g:deoplete#enable_at_startup = 0
+endif
 
 " supertab
 let g:SuperTabDefaultCompletionType = "context"
