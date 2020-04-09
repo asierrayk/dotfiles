@@ -39,6 +39,7 @@ set nofoldenable        " When off, all folds are open
 set hlsearch            " Highlight search
 set incsearch
 nnoremap <silent> <esc> :noh<CR><esc>
+nnoremap <esc>^[ <esc>^[
 
 " .: Scan the current buffer
 " w: Scan buffers from other windows
