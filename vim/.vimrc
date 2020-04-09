@@ -38,7 +38,7 @@ set nofoldenable        " When off, all folds are open
 
 set hlsearch            " Highlight search
 set incsearch
-nnoremap <esc><esc> :silent! nohlsearch<CR>
+nnoremap <silent> <esc> :noh<CR><esc>
 
 " .: Scan the current buffer
 " w: Scan buffers from other windows
@@ -64,6 +64,8 @@ call plug#begin()
 Plug 'jnurmine/Zenburn'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+Plug 'edkolev/tmuxline.vim'
+" Plug 'edkolev/promptline.vim' TODO check if makes sense to use it
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 
@@ -88,7 +90,7 @@ Plug 'terryma/vim-multiple-cursors'
 Plug 'ervandew/supertab'
 " to camelCase crc, to snake_case crs
 Plug 'tpope/vim-abolish'
-" Plug 'sjl/gundo.vim'
+Plug 'sjl/gundo.vim'
 
 " snippets engine
 Plug 'SirVer/ultisnips'
@@ -139,6 +141,8 @@ colors zenburn
 " AIRLINE
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='dark'
+
+" TMUXLINE
 
 " POSITIONING
 noremap <space><space> zz
@@ -226,7 +230,7 @@ map [l :prev<CR>
 map ]l :lnext<CR>
 
 " toggle gundo
-" nnoremap <leader>u :GundoToggle<CR>
+nnoremap <leader>u :GundoToggle<CR>
 
 " edit vimrc/zshrc and load vimrc bindings
 nnoremap <leader>ev :tabnew $MYVIMRC<CR>
@@ -248,6 +252,9 @@ nmap <leader>t :NERDTreeToggle<cr>
 
 " close vim if the only window left open is a NERDTree
 autocm bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+" CTRL-P
+let g:ctrlp_show_hidden = 1
 
 " git
 let g:gitgutter_map_keys = 0
