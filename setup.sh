@@ -77,6 +77,8 @@ pyenv deactivate
 pyenv virtualenv 3.6.10 neovim3
 pyenv activate neovim3
 pip install neovim
+# used for snippets
+pip install python-slugify 
 pyenv deactivate
 
 mkdir ~/.config/nvim

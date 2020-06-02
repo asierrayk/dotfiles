@@ -50,11 +50,15 @@ nnoremap <esc>^[ <esc>^[
 " kspell: Dictionary only when spell is enabled, :set spell
 set complete=.,w,b,u,t,i,kspell
 set completeopt=menu
-set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*/.venv/*,*/venv/*,*/logs/*
+set wildignore+=*/tmp/*,*.so,*.swp,*.zip,*.pyc,*/.venv/*,*/venv/*,*/logs/*,*/.mypy_cache/*
 
 " Spell check
 set nospell
 set spelllang=en_us,es
+
+" Fix last spell error
+nnoremap <c-S> [s1z=``
+inoremap <c-S> <c-O>[s<c-O>1z=<c-O>``
 
 call plug#begin()
 
@@ -70,18 +74,23 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 
-Plug 'ap/vim-css-color'
-
 " general programming languages
 " Plug 'scrooloose/syntastic'
 
 " python specific
 Plug 'klen/python-mode'
 Plug 'vim-scripts/indentpython.vim'
+
+" Plug 'petobens/poet-v'
 Plug 'davidhalter/jedi-vim'
+
+Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
 
 " json
 Plug 'tpope/vim-jdaddy'
+
+" jenkinsfile
+Plug 'thanethomson/vim-jenkinsfile'
 
 " Editing
 Plug 'tpope/vim-surround'
@@ -131,10 +140,23 @@ Plug 'asierrayk/vim-toggle'
 " All of your plugins must be added before the following line
 call plug#end()
 
+" Leader key
+map <Space> <leader>
+
 " PYTHON SUPPORT
 if has('nvim')
     let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')  " Python 3
 endif
+
+" poetry plugin
+let g:poetv_executables = ['poetry']
+let g:poetv_auto_activate = 1
+let g:poetv_statusline_symbol = 'VV'
+
+" pydocstring
+let g:pydocstring_formatter = 'sphinx'
+nmap <silent> <C-_> <Plug>(pydocstring)
+
 
 " THEME
 colors zenburn
@@ -144,9 +166,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline_theme='dark'
 
 " TMUXLINE
-
-" POSITIONING
-noremap <space><space> zz
 
 " windows
 nnoremap <C-h> <C-w>h
@@ -159,12 +178,15 @@ vnoremap <C-j> <C-w>j
 vnoremap <C-k> <C-w>k
 vnoremap <C-l> <C-w>l
 
-map <Space> <leader>
+" Buffers
+nnoremap <A-l> :bn<cr>
+nnoremap <A-h> :bp<cr>
 
 " tabs
-" Tab navigation like Firefox.
 nnoremap <C-t> :tabnew %<CR>
 inoremap <C-t> <Esc>:tabnew %<CR>
+" nnoremap <A-n> :tabn<CR>
+" nnoremap <A-p> :tabp<CR>
 
 " splits
 nnoremap <leader>" :split<CR>
@@ -194,6 +216,9 @@ nnoremap <Leader>P "+P
 nnoremap <Leader>y "+y
 nnoremap <Leader>p "+p
 
+nnoremap gp "0p
+vnoremap gp "0p
+
 " If you like "Y" to work from the cursor to the end of line
 map Y y$
 " Change text previous to cursor
@@ -204,8 +229,8 @@ map s ys
 map ss yss
 
 " search across project
-map <F1> :vimgrep /<C-R><C-W>/j ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left>
-map <leader>/ :vimgrep //j ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nnoremap <F1> :vimgrep /<C-R><C-W>/j ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left>
+nnoremap <leader>/ :vimgrep //j ./**/*<Left><Left><Left><Left><Left><Left><Left><Left><Left>
 " substitute
 vnoremap <F2> :s///gc<Left><Left><Left><Left>
 nnoremap <F2> :%s///gc<Left><Left><Left><Left>
@@ -221,7 +246,7 @@ map <F5> :e<CR>
 let g:SpellLangList= ["en_us", "es", "en_us,es"]
 nnoremap <F6> :call ToggleCycleSpellLang()<CR>
 
-map <F7> :Gdiffsplit<CR>
+map <F7> :Gvdiffsplit!<CR>
 map <F8> :Gstatus<CR>
 
 " quickfix loclist navigation
@@ -245,7 +270,7 @@ cmap w!! w !sudo tee % >/dev/null
 
 
 " NERDTREE
-nmap <leader>t :NERDTreeToggle<cr>
+nnoremap <leader>t :NERDTreeToggle<cr>
 
 " open NERDTree automatically when vim starts up
 " autocmd StdinReadPre * let s:std_in=1
@@ -255,6 +280,10 @@ nmap <leader>t :NERDTreeToggle<cr>
 autocm bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " CTRL-P
+nnoremap <silent> <c-b> :CtrlPBuffer<cr>
+let g:ctrlp_cmd = 'CtrlP'
+let g:ctrlp_map = '<c-p>'
+
 let g:ctrlp_show_hidden = 1
 
 " git
@@ -274,7 +303,7 @@ nmap <leader>hu <Plug>(GitGutterUndoHunk)
 
 "- ultisnips
 let g:UltiSnipsExpandTrigger = '<tab>'
-let g:UltiSnipsListSnippets = '<c-s>'
+let g:UltiSnipsListSnippets = '<leader>s'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
@@ -296,3 +325,13 @@ let g:VtrAppendNewline = 1
 let g:vtr_filetype_runner_overrides = {
         \ 'python': 'python3 {file}'
         \ }
+
+" vim-multi-cursor
+let g:multi_cursor_start_word_key      = '<C-n>'
+let g:multi_cursor_select_all_word_key = '<A-n>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-n>'
+let g:multi_cursor_prev_key            = '<C-p>'
+let g:multi_cursor_skip_key            = '<C-x>'
+let g:multi_cursor_quit_key            = '<Esc>'
