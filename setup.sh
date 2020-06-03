@@ -60,14 +60,14 @@ pip3 install --user pynvim
 pip install msgpack
 
 # NEOVIM
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt-get update
-sudo apt-get install neovim
+sudo add-apt-repository ppa:neovim-ppa/stable -y
+sudo apt-get update -y
+sudo apt-get install neovim -y
 
-sudo apt install python-neovim
-sudo apt install python3-neovim
+sudo apt install python-neovim -y
+sudo apt install python3-neovim -y
 
-sudo apt-get install python-dev python-pip python3-dev python3-pip
+sudo apt-get install python-dev python-pip python3-dev python3-pip -y
 
 pyenv virtualenv 2.7.14 neovim2
 pyenv activate neovim2
