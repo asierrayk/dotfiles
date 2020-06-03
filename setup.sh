@@ -107,7 +107,19 @@ echo ""
 echo "INSTALL TMUX"
 echo ""
 sudo apt-get install tmux -y
+
+
+# install ruby needed for tmuxinator
+sudo apt install gnupg -y 
+gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+sudo apt-get install software-properties-common -y
+sudo apt-add-repository -y ppa:rael-gc/rvm
+sudo apt-get update -y
+sudo apt-get install rvm -y
+rvm install 2.5.8
+
 gem install tmuxinator
+
 # tmuxinator completions
 wget https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh -O /usr/local/share/zsh/site-functions/_tmuxinator
 ln -s -f .dotfiles/tmux/.tmux.conf ~/.tmux.conf
