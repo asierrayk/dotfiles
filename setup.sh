@@ -60,14 +60,14 @@ pip3 install --user pynvim
 pip install msgpack
 
 # NEOVIM
-sudo add-apt-repository ppa:neovim-ppa/stable
-sudo apt-get update
-sudo apt-get install neovim
+sudo add-apt-repository ppa:neovim-ppa/stable -y
+sudo apt-get update -y
+sudo apt-get install neovim -y
 
-sudo apt install python-neovim
-sudo apt install python3-neovim
+sudo apt install python-neovim -y
+sudo apt install python3-neovim -y
 
-sudo apt-get install python-dev python-pip python3-dev python3-pip
+sudo apt-get install python-dev python-pip python3-dev python3-pip -y
 
 pyenv virtualenv 2.7.14 neovim2
 pyenv activate neovim2
@@ -107,7 +107,19 @@ echo ""
 echo "INSTALL TMUX"
 echo ""
 sudo apt-get install tmux -y
+
+
+# install ruby needed for tmuxinator
+sudo apt install gnupg -y 
+gpg --keyserver hkp://pool.sks-keyservers.net --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+sudo apt-get install software-properties-common -y
+sudo apt-add-repository -y ppa:rael-gc/rvm
+sudo apt-get update -y
+sudo apt-get install rvm -y
+rvm install 2.5.8
+
 gem install tmuxinator
+
 # tmuxinator completions
 wget https://raw.githubusercontent.com/tmuxinator/tmuxinator/master/completion/tmuxinator.zsh -O /usr/local/share/zsh/site-functions/_tmuxinator
 ln -s -f .dotfiles/tmux/.tmux.conf ~/.tmux.conf
