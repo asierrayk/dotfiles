@@ -185,8 +185,8 @@ nnoremap <A-h> :bp<cr>
 " tabs
 nnoremap <C-t> :tabnew %<CR>
 inoremap <C-t> <Esc>:tabnew %<CR>
-" nnoremap <A-n> :tabn<CR>
-" nnoremap <A-p> :tabp<CR>
+nnoremap <A-j> :tabn<CR>
+nnoremap <A-k> :tabp<CR>
 
 " splits
 nnoremap <leader>" :split<CR>
