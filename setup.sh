@@ -42,6 +42,9 @@ ln -s -f ~/.dotfiles/vim/ftplugin ~/.vim/ftplugin
 
 vim +PlugInstall +qall
 
+# ctags
+sudo apt-get install ctags -y
+
 # python
 # pdb
 ln -s -f .dotfiles/python/.pdbrc.py ~/.pdbrc.py

@@ -30,7 +30,7 @@ set hidden            " When off a buffer is unloaded when it is abandoned
 
 set wildmenu            " Autocompletion for commands
 set noshowmode          " Required for jedi-vim function signature
-set laststatus=2        " Show statusbar in all windows
+set laststatus=2        " Always show status bar
 set number              " Show line numbers
 set relativenumber      " Show relative line numbers
 set showmatch           " Highlight matching parentheses and brackets
@@ -74,12 +74,19 @@ Plug 'edkolev/tmuxline.vim'
 Plug 'scrooloose/nerdtree'
 Plug 'kien/ctrlp.vim'
 
+" theme 
+
 " general programming languages
 " Plug 'scrooloose/syntastic'
+Plug 'dense-analysis/ale'
+" Plug 'ludovicchabant/vim-gutentags' TODO check if makes sense to use it
 
 " python specific
-Plug 'klen/python-mode'
+" Plug 'python-mode/python-mode'
+" Plug 'jimf/vim-pep8-text-width'
 Plug 'vim-scripts/indentpython.vim'
+Plug 'mgedmin/python-imports.vim'
+Plug 'vim-python/python-syntax'
 
 " Plug 'petobens/poet-v'
 Plug 'davidhalter/jedi-vim'
@@ -97,7 +104,7 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'ervandew/supertab'
+" Plug 'ervandew/supertab'
 " to camelCase crc, to snake_case crs
 Plug 'tpope/vim-abolish'
 Plug 'sjl/gundo.vim'
@@ -109,13 +116,13 @@ Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 
 " snippets autocomplete deoplete
-if has('nvim')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-else
-  Plug 'Shougo/deoplete.nvim'
-  Plug 'roxma/nvim-yarp'
-  Plug 'roxma/vim-hug-neovim-rpc'
-endif
+" if has('nvim')
+"   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+" else
+"   Plug 'Shougo/deoplete.nvim'
+"   Plug 'roxma/nvim-yarp'
+"   Plug 'roxma/vim-hug-neovim-rpc'
+" endif
 
 " tmux
 Plug 'christoomey/vim-tmux-runner'
@@ -148,10 +155,6 @@ if has('nvim')
     let g:python3_host_prog = expand('~/.pyenv/versions/neovim3/bin/python')  " Python 3
 endif
 
-" poetry plugin
-let g:poetv_executables = ['poetry']
-let g:poetv_auto_activate = 1
-let g:poetv_statusline_symbol = 'VV'
 
 " pydocstring
 let g:pydocstring_formatter = 'sphinx'
@@ -219,6 +222,9 @@ nnoremap <Leader>p "+p
 nnoremap gp "0p
 vnoremap gp "0p
 
+" Current file name to clipboard
+nnoremap <leader>g :let @+ = expand('%:p')<CR>
+
 " If you like "Y" to work from the cursor to the end of line
 map Y y$
 " Change text previous to cursor
@@ -271,6 +277,7 @@ cmap w!! w !sudo tee % >/dev/null
 
 " NERDTREE
 nnoremap <leader>t :NERDTreeToggle<cr>
+map <leader>c :NERDTreeFind<cr>
 
 " open NERDTree automatically when vim starts up
 " autocmd StdinReadPre * let s:std_in=1
@@ -307,16 +314,16 @@ let g:UltiSnipsListSnippets = '<leader>s'
 let g:UltiSnipsJumpForwardTrigger = '<tab>'
 let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 
-if has('nvim')
-    let g:deoplete#enable_at_startup = 1
-else
-    let g:deoplete#enable_at_startup = 0
-endif
+" if has('nvim')
+"     let g:deoplete#enable_at_startup = 1
+" else
+"     let g:deoplete#enable_at_startup = 0
+" endif
 
 " supertab
-let g:SuperTabDefaultCompletionType = "context"
+" let g:SuperTabDefaultCompletionType = "context"
 " let g:SuperTabDefaultCompletionType    = '<C-n>'
-let g:SuperTabCrMapping                = 0
+" let g:SuperTabCrMapping                = 0
 
 " vim-tmux-runner
 let g:VtrStripLeadingWhitespace = 0
@@ -335,3 +342,28 @@ let g:multi_cursor_next_key            = '<C-n>'
 let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
+
+" ALE
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
+
+" TODO BUG FIX with deoplete and vim-multicursor
+" func! Multiple_cursors_before()
+"   if deoplete#is_enabled()
+"     call deoplete#disable()
+"     let g:deoplete_is_enable_before_multi_cursors = 1
+"   else
+"     let g:deoplete_is_enable_before_multi_cursors = 0
+"   endif
+" endfunc
+" func! Multiple_cursors_after()
+"   if g:deoplete_is_enable_before_multi_cursors
+"     call deoplete#enable()
+"   endif
+" endfunc
+
+
+" vim-pydocstring 
+" doq
+let g:pydocstring_doq_path='/home/acardoso/.pyenv/shims/doq'

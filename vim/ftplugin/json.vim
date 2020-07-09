@@ -1,4 +1,5 @@
 setlocal shiftwidth=2
 setlocal softtabstop=2
 
-nnoremap <leader>f :%!jq .<CR>
+" buffer modifier to avoid use this mapping in other file type
+nnoremap <buffer> <leader>f :%!jq .<CR>
