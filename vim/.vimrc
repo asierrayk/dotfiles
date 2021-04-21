@@ -32,7 +32,7 @@ set wildmenu            " Autocompletion for commands
 set noshowmode          " Required for jedi-vim function signature
 set laststatus=2        " Always show status bar
 set number              " Show line numbers
-set relativenumber      " Show relative line numbers
+set norelativenumber      " Show relative line numbers
 set showmatch           " Highlight matching parentheses and brackets
 set nofoldenable        " When off, all folds are open
 
@@ -88,7 +88,6 @@ Plug 'vim-scripts/indentpython.vim'
 Plug 'mgedmin/python-imports.vim'
 Plug 'vim-python/python-syntax'
 
-" Plug 'petobens/poet-v'
 Plug 'davidhalter/jedi-vim'
 
 Plug 'heavenshell/vim-pydocstring', { 'do': 'make install' }
@@ -103,6 +102,7 @@ Plug 'thanethomson/vim-jenkinsfile'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
+" TODO use this instead of vim-multiple-cursors https://github.com/mg979/vim-visual-multi
 Plug 'terryma/vim-multiple-cursors'
 " Plug 'ervandew/supertab'
 " to camelCase crc, to snake_case crs
@@ -344,6 +344,7 @@ let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 
 " ALE
+let g:ale_enabled = 1
 let g:ale_echo_msg_error_str = 'E'
 let g:ale_echo_msg_warning_str = 'W'
 let g:ale_echo_msg_format = '[%linter%] %s [%severity%]'
