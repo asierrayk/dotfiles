@@ -2,7 +2,9 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-  export ZSH=/home/${USER}/.oh-my-zsh
+export ZSH=/home/${USER}/.oh-my-zsh
+
+unsetopt beep
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -87,7 +89,7 @@ source $ZSH/oh-my-zsh.sh
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='nvim'
+  export EDITOR='vim'
 fi
 
 # Compilation flags
@@ -105,7 +107,6 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias vim='nvim'
 alias mux='tmuxinator'
 alias mkvnv="virtualenv -p python3 .venv"
 alias vnv="source .venv/bin/activate"
@@ -140,3 +141,5 @@ eval "$(pyenv virtualenv-init -)"
 
 # poetry
 source $HOME/.poetry/env
+
+export PATH="$HOME/.poetry/bin:$PATH"

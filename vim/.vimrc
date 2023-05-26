@@ -9,6 +9,9 @@ else
     set ttymouse=xterm2
 endif
 
+set visualbell
+set t_vb=
+
 filetype plugin indent on
 syntax on
 
@@ -104,7 +107,6 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-commentary'
 " TODO use this instead of vim-multiple-cursors https://github.com/mg979/vim-visual-multi
 Plug 'terryma/vim-multiple-cursors'
-" Plug 'ervandew/supertab'
 " to camelCase crc, to snake_case crs
 Plug 'tpope/vim-abolish'
 Plug 'sjl/gundo.vim'
@@ -319,11 +321,6 @@ let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
 " else
 "     let g:deoplete#enable_at_startup = 0
 " endif
-
-" supertab
-" let g:SuperTabDefaultCompletionType = "context"
-" let g:SuperTabDefaultCompletionType    = '<C-n>'
-" let g:SuperTabCrMapping                = 0
 
 " vim-tmux-runner
 let g:VtrStripLeadingWhitespace = 0

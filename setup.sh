@@ -84,7 +84,7 @@ pip install neovim
 pip install python-slugify 
 pyenv deactivate
 
-mkdir ~/.config/nvim
+mkdir -p ~/.config/nvim
 ln -s -f ~/.dotfiles/neovim/init.vim ~/.config/nvim/init.vim
 
 # install jq for json formatting
